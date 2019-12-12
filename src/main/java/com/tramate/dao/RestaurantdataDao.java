@@ -1,5 +1,9 @@
 package com.tramate.dao;
 
-public class RestaurantdataDao {
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class RestaurantdataDao extends SqlSessionDaoSupport {
 
 }

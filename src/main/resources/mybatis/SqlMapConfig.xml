@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+     <typeAliases>
+           <typeAlias type="com.tramate.dto.GuideDto" alias="gdto"/>
+     </typeAliases>
+     <mappers>
+           <mapper resource="mybatis/GuideSql.xml"/><!-- 여기도 .은 /로 들어가면 된다 안되면 검색해보기. -->
+     </mappers>
+</configuration>

@@ -1,5 +1,9 @@
 package com.tramate.dao;
 
-public class TravelerDao {
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class TravelerDao extends SqlSessionDaoSupport {
 
 }

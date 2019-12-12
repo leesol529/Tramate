@@ -4,5 +4,29 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+           <property name="locations">
+                <value>WEB-INF/dbserver.properties</value><!-- 서버 설정 파일이 있는 위치를 알려주면 된다. -->
+           </property>
+     </bean>
+     
+     <!-- 위에서 설정해놨기 떄문에 ${driver 이런것을 쓸 수 있다는 그런 것이다.} -->
+     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+           <property name="driverClassName" value="${driver}"/>
+           <property name="url" value="${url}"/>
+           <property name="username" value="${username}"/>
+           <property name="password" value="${password}"></property>
+     </bean>
+           
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+           <property name="dataSource" ref="dataSource"/>
+           <property name="configLocation">
+                <value>classpath:mybatis/SqlMapConfig.xml</value><!-- .일떄 /로 줘야 할떄도 있으니까 이건 주의하자. 검색하자. -->
+           </property>
+     </bean>
+     
+     <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+           <constructor-arg ref="sqlSessionFactory"/>
+     </bean>
 		
 </beans>
