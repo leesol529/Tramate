@@ -3,8 +3,22 @@
 <configuration>
      <typeAliases>
            <typeAlias type="com.tramate.dto.GuideDto" alias="gdto"/>
+           <typeAlias type="com.tramate.dto.ActivitydataDto" alias="addto"/>
+           <typeAlias type="com.tramate.dto.GuiderateDto" alias="grdto"/>
+           <typeAlias type="com.tramate.dto.RestaurantdataDto" alias="rddto"/>
+           <typeAlias type="com.tramate.dto.SpotdataDto" alias="sddto"/>
+           <typeAlias type="com.tramate.dto.TravelerchoiceDto" alias="tcdto"/>
+           <typeAlias type="com.tramate.dto.TravelerDto" alias="tdto"/>
+           <typeAlias type="com.tramate.dto.TravelerrateDto" alias="trdto"/>
      </typeAliases>
      <mappers>
-           <mapper resource="mybatis/GuideSql.xml"/><!-- 여기도 .은 /로 들어가면 된다 안되면 검색해보기. -->
+           <mapper resource="mybatis/GuideSql.xml"/>
+           <mapper resource="mybatis/ActivitydataSql.xml"/>
+           <mapper resource="mybatis/GuiderateSql.xml"/>
+           <mapper resource="mybatis/RestaurantdataSql.xml"/>
+           <mapper resource="mybatis/SpotdataSql.xml"/>
+           <mapper resource="mybatis/TravelerchoiceSql.xml"/>
+           <mapper resource="mybatis/TravelerrateSql.xml"/>
+           <mapper resource="mybatis/TravelerSql.xml"/>
      </mappers>
 </configuration>
