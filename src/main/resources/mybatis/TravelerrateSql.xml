@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="travelerRate">
-<select id="GuideTotalCount6" resultType="int">
+	<select id="GuideTotalCount6" resultType="int">
            select count(*) from guide
      </select>
+     
+     <insert id="insertTravelerRate" parameterType="trdto">
+     	insert into travelerrate values(seq_tramate.nextval,#{gnum},#{tnum},#{rate},#{content})
+     </insert>
+     
+     <select id="selectTravelerRate" parameterType="int">
+     	select * from travelerrate where num=#{num}
+     </select>
+     
+     <update id="updateTravelerRate" parameterType="trdto">
+     	update travelerrate set rate=#{rate},content=#{content} where num=#{num}
+     </update>
+     
+     <delete id="deleteTravelerRate" parameterType="int">
+     	delete from travelerrate where num=#{num}
+     </delete>
 </mapper>

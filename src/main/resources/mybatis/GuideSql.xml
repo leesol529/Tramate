@@ -4,4 +4,20 @@
      <select id="GuideTotalCount" resultType="int">
            select count(*) from guide
      </select>
+     
+     <insert id="insertGuide" parameterType="gdto">
+     	insert into guide values(seq_tramate.nextval,#{name},#{nat},#{spot},#{mobile},#{email1},#{email2},#{addr},#{content},#{img},#{fare})
+     </insert>
+     
+     <select id="selectGuide" parameterType="int">
+     	select * from guide where num=#{num}
+     </select>
+     
+     <update id="updateGuide" parameterType="gdto">
+     	update guide set name=#{name},nat=#{nat},spot=#{spot},mobile=#{mobile},email1=#{email1},email2=#{email2},addr=#{addr},content=##{content},img=#{img},fare={fare} where num=#{num}
+     </update>
+     
+     <delete id="deleteGuide" parameterType="int">
+     	delete from guide where num=#{num}
+     </delete>
 </mapper>

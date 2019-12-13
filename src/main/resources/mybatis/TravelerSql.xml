@@ -4,4 +4,20 @@
 <select id="GuideTotalCount7" resultType="int">
            select count(*) from guide
 </select>
+	<insert id="insertTraveler" parameterType="tdto">
+		insert into traveler values(seq_tramate.nextval,#{name},#{nat},#{mobile},#{email1},#{email2},#{addr},#{content},#{img})
+	</insert>
+	
+	<select id="selectTraveler" parameterType="int">
+		select * from traveler where num=#{num}
+	</select>
+	
+	<update id="updateTraveler" parameterType="tdto">
+		update traveler set name=#{name},nat=#{nat},mobile=#{mobile},email1=#{email1},email2=#{email2},addr=#{addr},content=#{content},img=#{img} where num=#{num}
+	</update>
+	
+	<delete id="deleteTraveler" parameterType="int">
+		delete from traveler where num=#{num}
+	</delete>
+	
 </mapper>

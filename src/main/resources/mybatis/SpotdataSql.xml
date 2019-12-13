@@ -4,4 +4,20 @@
 <select id="GuideTotalCount4" resultType="int">
            select count(*) from guide
      </select>
+     
+     <insert id="insertSpotData" parameterType="sddto">
+     	insert into spotdata values(seq_tramate.nextval,#{gnum},#{name},#{img},#{content})
+     </insert>
+     
+     <select id="selectSpotData" parameterType="int">
+     	select * from spotdata where num={num}
+     </select>
+     
+     <update id="updateSpotData" parameterType="sddto">
+     	update spotdata set name=#{name},img=#{img},content=#{content} where num=#{num}
+     </update>
+     
+     <delete id="deleteSpotData" parameterType="int">
+     	delete from spotdata where num=#{num}
+     </delete>
 </mapper>

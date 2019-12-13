@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guideRate">
-<select id="GuideTotalCount2" resultType="int">
+	<select id="GuideTotalCount2" resultType="int">
            select count(*) from guide
      </select>
+     
+     <insert id="insertGuideRate" parameterType="grdto">
+     	insert into guiderate values(seq_tramate.nextval,#{gnum},#{tnum},#{rate},#{content})
+     </insert>
+     
+     <select id="selectGuideRate" parameterType="int">
+     	select * from guiderate where num=#{num}
+     </select>
+     
+     <update id="updateGuideRate" parameterType="grdto">
+     	update guiderate set rate=#{rate},content=#{content} where num=#{num}
+     </update>
+     
+     <delete id="deleteGuideRate" parameterType="int">
+     	delete from guiderate where num=#{num}
+     </delete>
+     
+     <select id="selectGuideRateList">
+     	select * from guiderate
+     </select>
+     
 </mapper>

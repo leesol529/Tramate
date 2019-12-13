@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="activityData">
-<select id="GuideTotalCount1" resultType="int">
+	 <select id="GuideTotalCount1" resultType="int">
            select count(*) from guide
+     </select>
+     
+     <insert id="activityDataInsert" parameterType="addto">
+     	insert into activitydata values(seq_tramate.nextval,#{gnum},#{type},#{img},#{price},#{content})
+     </insert>
+     
+     <delete id="activityDataDelete" parameterType="int">
+     	delete from activitydata where num=#{num}
+     </delete>
+     
+     <update id="activityDataUpdate" parameterType="addto">
+     	update activitydata set type=#{type},img=#{img},price=#{price},content=#{content} where num=#{num}
+     </update>
+     
+     <select id="activityDataSelect" parameterType="int" resultType="addto">
+     	select * from activitydata where num=#{num}
+     </select>
+     
+     <select id="activityDataSelectList" resultType="addto">
+     	select * from activitydata
      </select>
 </mapper>
