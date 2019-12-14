@@ -39,4 +39,10 @@ public class ActivitydataDao extends SqlSessionDaoSupport {
 		
 		return getSqlSession().selectList("activityDataSelectList");
 	}
+	
+	//ActivityData의 총 갯수를 가져오는 메소드
+	public int getTotalCount() {
+		
+		return getSqlSession().selectOne("activityTotalCount");
+	}
 }

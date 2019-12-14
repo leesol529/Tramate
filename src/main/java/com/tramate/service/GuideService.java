@@ -40,4 +40,6 @@ public class GuideService {
 
 		dao.deleteGuide(num);
 	}
+
+	
 }

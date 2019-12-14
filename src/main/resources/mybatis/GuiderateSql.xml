@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guideRate">
-	<select id="GuideTotalCount2" resultType="int">
-           select count(*) from guide
+	<select id="guidRateTotalCount" resultType="int">
+           select count(*) from guiderate
      </select>
      
      <insert id="insertGuideRate" parameterType="grdto">
-     	insert into guiderate values(seq_tramate.nextval,#{gnum},#{tnum},#{rate},#{content})
+     	insert into guiderate values(seq_guiderate.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
      <select id="selectGuideRate" parameterType="int">

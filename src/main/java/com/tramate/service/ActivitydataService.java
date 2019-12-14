@@ -43,4 +43,9 @@ public class ActivitydataService {
 
 			return dao.getActivityDataList();
 		}
+		//ActivityData의 총 갯수를 가져오는 메소드
+		public int getTotalCount() {
+
+			return dao.getTotalCount();
+		}
 }

@@ -11,29 +11,35 @@ public class TravelerService {
 
 	@Autowired
 	private TravelerDao dao;
-	
-	//Dto를 통해 하나의 Traveler를 생성하는 메소드
-		public void insertTraveler(TravelerDto dto) {
 
-			dao.insertTraveler(dto);
-		}
-		
-		//num을 통해 하나의 Traveler를 읽는 메소드
-		public TravelerDto getTraveler(int num) {
+	// Dto를 통해 하나의 Traveler를 생성하는 메소드
+	public void insertTraveler(TravelerDto dto) {
 
-			return dao.getTraveler(num);
-		}
-		
-		//Dto를 통해 하나의 Traveler를 업데이트하는 메소드
-		public void updateTraveler(TravelerDto dto) {
+		dao.insertTraveler(dto);
+	}
 
-			dao.updateTraveler(dto);
-		}
-		
-		//num을 통해 하나의 Traveler를 삭제하는 메소드
-		public void deleteTraveler(int num) {
+	// num을 통해 하나의 Traveler를 읽는 메소드
+	public TravelerDto getTraveler(int num) {
 
-			dao.deleteTraveler(num);
-		}
-	
+		return dao.getTraveler(num);
+	}
+
+	// Dto를 통해 하나의 Traveler를 업데이트하는 메소드
+	public void updateTraveler(TravelerDto dto) {
+
+		dao.updateTraveler(dto);
+	}
+
+	// num을 통해 하나의 Traveler를 삭제하는 메소드
+	public void deleteTraveler(int num) {
+
+		dao.deleteTraveler(num);
+	}
+
+	// 총 갯수를 가져오는 메소드
+	public int getTotalCount() {
+
+		return dao.getTotalCount();
+	}
+
 }

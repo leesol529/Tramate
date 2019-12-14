@@ -11,28 +11,34 @@ public class SpotdataService {
 
 	@Autowired
 	private SpotdataDao dao;
-	
-	//Dto을 통해 하나의 SpotData를 생성하는 메소드
-		public void insertSpotData(SpotdataDto dto) {
 
-			dao.insertSpotData(dto);
-		}
-		
-		//num을 통해 하나의 SpotData를 읽는 메소드
-		public SpotdataDto getSpotData(int num) {
+	// Dto을 통해 하나의 SpotData를 생성하는 메소드
+	public void insertSpotData(SpotdataDto dto) {
 
-			return dao.getSpotData(num);
-		}
-		
-		//Dto를 통해 하나의 SpotData를 업데이트하는 메소드
-		public void updateSpotData(SpotdataDto dto) {
+		dao.insertSpotData(dto);
+	}
 
-			dao.updateSpotData(dto);
-		}
-		
-		//num을 통해 하나의 SpotData를 삭제하는 메소드
-		public void deleteSpotData(int num) {
+	// num을 통해 하나의 SpotData를 읽는 메소드
+	public SpotdataDto getSpotData(int num) {
 
-			dao.deleteSpotData(num);
-		}
+		return dao.getSpotData(num);
+	}
+
+	// Dto를 통해 하나의 SpotData를 업데이트하는 메소드
+	public void updateSpotData(SpotdataDto dto) {
+
+		dao.updateSpotData(dto);
+	}
+
+	// num을 통해 하나의 SpotData를 삭제하는 메소드
+	public void deleteSpotData(int num) {
+
+		dao.deleteSpotData(num);
+	}
+
+	// 총 갯수를 가져오는 메소드
+	public int getTotalCount() {
+
+		return dao.getTotalCount();
+	}
 }

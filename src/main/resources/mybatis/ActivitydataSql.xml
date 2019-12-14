@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="activityData">
-	 <select id="GuideTotalCount1" resultType="int">
-           select count(*) from guide
+	 <select id="activityTotalCount" resultType="int">
+           select count(*) from activitydata
      </select>
      
      <insert id="activityDataInsert" parameterType="addto">
-     	insert into activitydata values(seq_tramate.nextval,#{gnum},#{type},#{img},#{price},#{content})
+     	insert into activitydata values(seq_activity.nextval,#{gnum},#{type},#{img},#{price},#{content})
      </insert>
      
      <delete id="activityDataDelete" parameterType="int">
@@ -24,4 +24,6 @@
      <select id="activityDataSelectList" resultType="addto">
      	select * from activitydata
      </select>
+     
+     
 </mapper>

@@ -31,4 +31,10 @@ public class RestaurantdataDao extends SqlSessionDaoSupport {
 		
 		getSqlSession().delete("deleteRestaurantData", num);
 	}
+	
+	//RestaurantData의 총 갯수를 가져오는 메소드
+		public int getTotalCount() {
+			
+			return getSqlSession().selectOne("restaurantTotalCount");
+		}
 }

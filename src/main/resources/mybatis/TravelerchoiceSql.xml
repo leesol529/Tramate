@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="travelerChoice">
-<select id="GuideTotalCount5" resultType="int">
-           select count(*) from guide
+	<select id="travelerChoiceTotalCount" resultType="int">
+           select count(*) from travelerchoice
      </select>
      
      <insert id="insertTravelerChoice" parameterType="tcdto">
-     	insert into travelerchoice values(seq_tramate.nextval,#{gnum},#{tnum},#{snum})
+     	insert into travelerchoice values(seq_choice.nextval,#{gnum},#{tnum},#{snum})
      </insert>
      
      <select id="selectTravelerChoice" parameterType="int">

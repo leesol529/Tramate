@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertGuide" parameterType="gdto">
-     	insert into guide values(seq_tramate.nextval,#{name},#{nat},#{spot},#{mobile},#{email1},#{email2},#{addr},#{content},#{img},#{fare})
+     	insert into guide values(seq_guide.nextval,#{name},#{nat},#{spot},#{mobile},#{email1},#{email2},#{addr},#{content},#{img},#{fare})
      </insert>
      
      <select id="selectGuide" parameterType="int">
