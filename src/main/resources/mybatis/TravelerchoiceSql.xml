@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertTravelerChoice" parameterType="tcdto">
-     	insert into travelerchoice values(seq_choice.nextval,#{gnum},#{tnum},#{snum})
+     	insert into travelerchoice values(choice_seq.nextval,#{gnum},#{tnum},#{snum})
      </insert>
      
      <select id="selectTravelerChoice" parameterType="int">

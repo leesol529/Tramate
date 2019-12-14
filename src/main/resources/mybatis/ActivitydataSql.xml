@@ -6,7 +6,7 @@
      </select>
      
      <insert id="activityDataInsert" parameterType="addto">
-     	insert into activitydata values(seq_activity.nextval,#{gnum},#{type},#{img},#{price},#{content})
+     	insert into activitydata values(activity_seq.nextval,#{gnum},#{type},#{img},#{price},#{content})
      </insert>
      
      <delete id="activityDataDelete" parameterType="int">

@@ -4,13 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tramate.dto.ActivitydataDto;
+import com.tramate.dto.GuideDto;
 import com.tramate.service.GuideService;
 
 @RestController
+@CrossOrigin
 public class GuideController {
 
 	@Autowired
@@ -22,25 +30,32 @@ public class GuideController {
 		return service.getTotalCount();
 	}
 
-	// Spot°ú °ü·ÃµÈ guideÀÇ ÃÑ ¼ö¸¦ ±¸ÇÏ´Â ¸Þ¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ guideï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼Òµï¿½
 	@GetMapping("/guideTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot() {
 
-		return service.getTotalCountRelatedSpot("´Ù³¶");
+		return service.getTotalCountRelatedSpot("ï¿½Ù³ï¿½");
 
 	}
 
-	// Spot°ú °ü·ÃµÈ Guide¸¦ ·£´ýÀ¸·Î °¡Á®¿À´Â ¸Þ¼Òµå
-	//ÃßÈÄ spot, start ,endÀÇ °ªÀ» Á¶Á¤ÇØ¾ß ÇÑ´Ù.
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+	//ï¿½ï¿½ï¿½ï¿½ spot, start ,endï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 	@GetMapping("/guideRandom")
 	public List<ActivitydataDto> guideRandomList() {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "´Ù³¶");
+		map.put("spot", "ï¿½Ù³ï¿½");
 		map.put("start","0");
 		map.put("end","5");
 		
 		return service.guideRandomList(map);
+	}
+	
+	@RequestMapping(value = "/guide/inputdata", method = RequestMethod.POST)
+	public @ResponseBody void insertGuideData(@RequestBody GuideDto dto) {
+		
+		System.out.println(dto);
+		service.insertGuide(dto);
 	}
 
 }

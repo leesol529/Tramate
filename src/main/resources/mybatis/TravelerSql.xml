@@ -6,7 +6,7 @@
      </select>
      
 	<insert id="insertTraveler" parameterType="tdto">
-		insert into traveler values(seq_travel.nextval,#{name},#{nat},#{mobile},#{email1},#{email2},#{addr},#{content},#{img})
+		insert into traveler values(traveler_seq.nextval,#{name},#{nat},#{mobile},#{email1},#{email2},#{addr},#{content},#{img})
 	</insert>
 	
 	<select id="selectTraveler" parameterType="int">

@@ -79,5 +79,12 @@ public class GuideDto {
 	public void setFare(String fare) {
 		this.fare = fare;
 	}
+	@Override
+	public String toString() {
+		return "GuideDto [num=" + num + ", name=" + name + ", nat=" + nat + ", spot=" + spot + ", mobile=" + mobile
+				+ ", email1=" + email1 + ", email2=" + email2 + ", addr=" + addr + ", content=" + content + ", img="
+				+ img + ", fare=" + fare + "]";
+	}
+	
 	
 }

@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertSpotData" parameterType="sddto">
-     	insert into spotdata values(seq_spot.nextval,#{gnum},#{name},#{img},#{content})
+     	insert into spotdata values(spot_seq.nextval,#{gnum},#{name},#{img},#{content})
      </insert>
      
      <select id="selectSpotData" parameterType="int">

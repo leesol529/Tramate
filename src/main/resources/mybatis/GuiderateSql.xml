@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertGuideRate" parameterType="grdto">
-     	insert into guiderate values(seq_guiderate.nextval,#{gnum},#{tnum},#{rate},#{content})
+     	insert into guiderate values(guiderate_seq.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
      <select id="selectGuideRate" parameterType="int">

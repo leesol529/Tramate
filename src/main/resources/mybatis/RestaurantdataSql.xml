@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertRestaurantData" parameterType="rddto">
-     	insert into restaurantdata values(seq_restaurant.nextval,#{gnum},#{type},#{img},#{price},#{content})
+     	insert into restaurantdata values(restaurant_seq.nextval,#{gnum},#{type},#{img},#{price},#{content})
      </insert>
      
      <select id="selectRestaurantData" parameterType="int">

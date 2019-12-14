@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertTravelerRate" parameterType="trdto">
-     	insert into travelerrate values(seq_travelerrate.nextval,#{gnum},#{tnum},#{rate},#{content})
+     	insert into travelerrate values(travelerrate_seq.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
      <select id="selectTravelerRate" parameterType="int">
