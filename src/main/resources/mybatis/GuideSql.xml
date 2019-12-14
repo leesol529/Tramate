@@ -20,4 +20,26 @@
      <delete id="deleteGuide" parameterType="int">
      	delete from guide where num=#{num}
      </delete>
+     
+     <!-- spot과 관련된 호스트의 총 수를 구하는 sql -->
+     <select id="guideCountRelatedSpot" parameterType="String" resultType="int">
+     	select count(*)
+     	from guide g
+     	where g.spot=#{spot}
+     </select>
+     
+     <!-- spot과 관련된 가이드 6명를 랜덤으로 고르는 sql -->
+     <select id="guideRandomList" parameterType="HashMap" resultType="gdto">
+     	
+     	 <![CDATA[
+     	 select *
+     	 from (select rownum as rn, z.*
+     	 from (select g.*
+     	 from guide g
+     	 where g.spot=#{spot}) z
+     	 where rownum<=#{end})
+     	 where rn <=#{start}
+     	 ]]> 
+     	
+     </select>
 </mapper>

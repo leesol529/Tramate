@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.sun.javafx.collections.MappingChange.Map;
 import com.tramate.dto.ActivitydataDto;
 
 @Repository
@@ -44,5 +45,17 @@ public class ActivitydataDao extends SqlSessionDaoSupport {
 	public int getTotalCount() {
 		
 		return getSqlSession().selectOne("activityTotalCount");
+	}
+	
+	//Spot과 관련된 Activity의 총 갯수를 가져오는 메소드
+	public int getTotalCountRelatedSpot(String spot) {
+		
+		return getSqlSession().selectOne("activityCountRelatedSpot",spot);
+	}
+	
+	//Spot과 관련된 Activity를 랜덤으로 6개 가져오는 메소드
+	public List<ActivitydataDto> activityRandomList(java.util.Map<String, String> map){
+		
+		return getSqlSession().selectList("activityRandomList",map);
 	}
 }

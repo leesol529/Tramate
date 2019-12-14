@@ -1,5 +1,7 @@
 package com.tramate.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,17 @@ public class RestaurantdataService {
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
+	}
+
+	// Spot과 관련된 Restaurant의 총 갯수를 가져오는 메소드
+	public int getTotalCountRelatedSpot(String spot) {
+
+		return dao.getTotalCountRelatedSpot(spot);
+	}
+
+	// Spot과 관련된 Restaurant를 랜덤으로 가져오는 메소드
+	public List<RestaurantdataDto> RestaurantRandomList(java.util.Map<String, String> map) {
+
+		return dao.RestaurantRandomList(map);
 	}
 }

@@ -1,5 +1,8 @@
 package com.tramate.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +39,17 @@ public class SpotdataDao extends SqlSessionDaoSupport {
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("spotTotalCount");
+	}
+
+	// Spot과 관련된 관광지의 총 수를 가져오는 메소드
+	public int getTotalCountRelatedSpot(String spot) {
+
+		return getSqlSession().selectOne("spotCountRelatedSpot", spot);
+	}
+	
+	//Spot과 관련된 관광지를 랜덤으로 가져오는 메소드
+	public List<SpotdataDto> spotRandomList(Map<String, String> map){
+		
+		return getSqlSession().selectList("spotRandomList", map);
 	}
 }

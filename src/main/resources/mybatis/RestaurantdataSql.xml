@@ -20,4 +20,26 @@
      <delete id="deleteRestaurantData" parameterType="int">
      	delete from restaurantdata where num=#{num}
      </delete>
+     
+     <!-- spot과 관련된 restaurant의 총 갯수를 구하는 sql -->
+     <select id="restaurantCountRelatedSpot" parameterType="String" resultType="int">
+     	select count(*)
+     	from guide g, restaurantdata r
+     	where g.spot=#{spot} and g.num=r.gnum
+     </select>
+     
+      <!-- spot과 관련된 Restaurant 8개를 랜덤으로 고르는 sql -->
+     <select id="restaurantRandomList" parameterType="HashMap" resultType="rddto">
+     	
+     	 <![CDATA[
+     	 select *
+     	 from (select rownum as rn, z.*
+     	 from (select a.*
+     	 from restaurantdata a, guide g
+     	 where g.spot=#{spot} and g.num=a.gnum) z
+     	 where rownum<=#{end})
+     	 where rn <=#{start}
+     	 ]]> 
+     	
+     </select>
 </mapper>
