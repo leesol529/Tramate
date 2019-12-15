@@ -5,12 +5,27 @@ public class TravelerDto {
 	private String name;
 	private String nat;
 	private String mobile;
-	private String email1;
-	private String email2;
+	private String email;
 	private String addr;
 	private String content;
 	private String img;
+	private String id;
+	private String pass;
 	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -35,18 +50,7 @@ public class TravelerDto {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getEmail1() {
-		return email1;
-	}
-	public void setEmail1(String email1) {
-		this.email1 = email1;
-	}
-	public String getEmail2() {
-		return email2;
-	}
-	public void setEmail2(String email2) {
-		this.email2 = email2;
-	}
+
 	public String getAddr() {
 		return addr;
 	}
@@ -64,5 +68,11 @@ public class TravelerDto {
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

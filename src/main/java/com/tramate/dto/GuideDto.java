@@ -6,13 +6,26 @@ public class GuideDto {
 	private String nat;
 	private String spot;
 	private String mobile;
-	private String email1;
-	private String email2;
+	private String email;
 	private String addr;
 	private String content;
 	private String img;
 	private String fare;
+	private String id;
+	private String pass;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -43,17 +56,12 @@ public class GuideDto {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getEmail1() {
-		return email1;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setEmail1(String email1) {
-		this.email1 = email1;
-	}
-	public String getEmail2() {
-		return email2;
-	}
-	public void setEmail2(String email2) {
-		this.email2 = email2;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getAddr() {
 		return addr;
@@ -82,9 +90,10 @@ public class GuideDto {
 	@Override
 	public String toString() {
 		return "GuideDto [num=" + num + ", name=" + name + ", nat=" + nat + ", spot=" + spot + ", mobile=" + mobile
-				+ ", email1=" + email1 + ", email2=" + email2 + ", addr=" + addr + ", content=" + content + ", img="
-				+ img + ", fare=" + fare + "]";
+				+ ", email=" + email + ", addr=" + addr + ", content=" + content + ", img=" + img + ", fare=" + fare
+				+ ", id=" + id + ", pass=" + pass + "]";
 	}
+	
 	
 	
 }
