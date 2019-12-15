@@ -9,7 +9,7 @@
      	insert into guide values(guide_seq.nextval,#{name},#{nat},#{spot},#{mobile},#{email1},#{email2},#{addr},#{content},#{img},#{fare})
      </insert>
      
-     <select id="selectGuide" parameterType="int">
+     <select id="selectGuide" parameterType="int" resultType="gdto">
      	select * from guide where num=#{num}
      </select>
      

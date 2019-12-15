@@ -9,7 +9,7 @@
      	insert into restaurantdata values(restaurant_seq.nextval,#{gnum},#{type},#{img},#{price},#{content})
      </insert>
      
-     <select id="selectRestaurantData" parameterType="int">
+     <select id="selectRestaurantData" parameterType="int" resultType="rddto">
      	select * from restaurantdata where num=#{num}
      </select>
      

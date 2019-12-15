@@ -9,7 +9,7 @@
      	insert into travelerchoice values(choice_seq.nextval,#{gnum},#{tnum},#{snum})
      </insert>
      
-     <select id="selectTravelerChoice" parameterType="int">
+     <select id="selectTravelerChoice" parameterType="int" resultType="tcdto">
      	select * from travelerchoice where num=#{num}
      </select>
      

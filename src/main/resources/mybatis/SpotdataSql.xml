@@ -9,7 +9,7 @@
      	insert into spotdata values(spot_seq.nextval,#{gnum},#{name},#{img},#{content})
      </insert>
      
-     <select id="selectSpotData" parameterType="int">
+     <select id="selectSpotData" parameterType="int" resultType="sddto">
      	select * from spotdata where num={num}
      </select>
      

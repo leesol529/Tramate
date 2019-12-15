@@ -9,7 +9,7 @@
 		insert into traveler values(traveler_seq.nextval,#{name},#{nat},#{mobile},#{email1},#{email2},#{addr},#{content},#{img})
 	</insert>
 	
-	<select id="selectTraveler" parameterType="int">
+	<select id="selectTraveler" parameterType="int" resultType="tdto">
 		select * from traveler where num=#{num}
 	</select>
 	

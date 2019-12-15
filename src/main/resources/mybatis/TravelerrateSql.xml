@@ -9,7 +9,7 @@
      	insert into travelerrate values(travelerrate_seq.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
-     <select id="selectTravelerRate" parameterType="int">
+     <select id="selectTravelerRate" parameterType="int" resultType="trdto">
      	select * from travelerrate where num=#{num}
      </select>
      

@@ -9,7 +9,7 @@
      	insert into guiderate values(guiderate_seq.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
-     <select id="selectGuideRate" parameterType="int">
+     <select id="selectGuideRate" parameterType="int" resultType="grdto">
      	select * from guiderate where num=#{num}
      </select>
      
