@@ -14,6 +14,8 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+
+	<!-- oracle-driver-search-path ojdbc6 서버에서 받기 위해 필요한 리파지토리 -->
 	<repositories>
 		<repository>
 			<id>codelds</id>
@@ -105,8 +107,7 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.6</version>
 		</dependency>
-		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc6</artifactId> 
-			<version>11.2.0.3</version> </dependency> -->
+		
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
