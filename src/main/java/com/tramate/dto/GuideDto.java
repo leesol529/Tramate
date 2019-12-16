@@ -13,7 +13,14 @@ public class GuideDto {
 	private String fare;
 	private String id;
 	private String pass;
+	private String continent;
 	
+	public String getContinent() {
+		return continent;
+	}
+	public void setContinent(String continent) {
+		this.continent = continent;
+	}
 	public String getId() {
 		return id;
 	}
