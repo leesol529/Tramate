@@ -49,7 +49,7 @@ public class GuideController {
 	public List<ActivitydataDto> guideRandomList() {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "�ٳ�");
+		map.put("spot", "다낭");
 		map.put("start", "0");
 		map.put("end", "5");
 
@@ -58,8 +58,8 @@ public class GuideController {
 
 	// React로 부터 json을 받아서 guide를 등록한다.
 
-	@RequestMapping(value = "/guide/inputdata", method = RequestMethod.POST)
-	public @ResponseBody void insertGuideData(@RequestBody GuideDto dto) {
+	@RequestMapping(value = "/guide/join", method = RequestMethod.POST)
+	public void insertGuideData(@RequestBody GuideDto dto) {
 
 		service.insertGuide(dto);
 	}
@@ -72,11 +72,11 @@ public class GuideController {
 	}
 
 	@RequestMapping(value = "/guide/imageupload", method = RequestMethod.POST)
-	public @ResponseBody void insertGuideImage(@RequestParam MultipartFile picture, HttpServletRequest request) {
+	public void insertGuideImage(@RequestParam MultipartFile uploadFile, HttpServletRequest request) {
 		SpringFileWriter fileWriter = new SpringFileWriter();
 		// 저장할 path 구하기
 		String path = request.getSession().getServletContext().getRealPath("/save");
 		System.out.println("path:" + path);
-		fileWriter.writeFile(picture, path);// save 폴더에 저장해주는메서드
+		fileWriter.writeFile(uploadFile, path);// save 폴더에 저장해주는메서드
 	}
 }

@@ -12,31 +12,31 @@ public class TravelerService {
 	@Autowired
 	private TravelerDao dao;
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Traveler tableì— ì •ë³´ insert
 	public void insertTraveler(TravelerDto dto) {
 
 		dao.insertTraveler(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ ÀĞ´Â ¸Ş¼Òµå
+	// numì— í•´ë‹¹í•˜ëŠ” Traveler ì •ë³´ ê°€ì ¸ì˜¤ê¸° 
 	public TravelerDto getTraveler(int num) {
 
 		return dao.getTraveler(num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Travelerì •ë³´ update
 	public void updateTraveler(TravelerDto dto) {
 
 		dao.updateTraveler(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numì— í•´ë‹¹í•˜ëŠ” Traveler ì •ë³´ ì‚­ì œ 
 	public void deleteTraveler(int num) {
 
 		dao.deleteTraveler(num);
 	}
 
-	// ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Traveler ì „ì²´ ëª…ìˆ˜ count
 	public int getTotalCount() {
 
 		return dao.getTotalCount();

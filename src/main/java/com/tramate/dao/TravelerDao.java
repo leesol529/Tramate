@@ -8,31 +8,31 @@ import com.tramate.dto.TravelerDto;
 @Repository
 public class TravelerDao extends SqlSessionDaoSupport {
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Traveler tableì— ì •ë³´ insert
 	public void insertTraveler(TravelerDto dto) {
 
 		getSqlSession().insert("insertTraveler", dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ ÀĞ´Â ¸Ş¼Òµå
+	// numì— í•´ë‹¹í•˜ëŠ” Traveler ì •ë³´ ê°€ì ¸ì˜¤ê¸° 
 	public TravelerDto getTraveler(int num) {
 
 		return getSqlSession().selectOne("selectTraveler", num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Travelerì •ë³´ update
 	public void updateTraveler(TravelerDto dto) {
 
 		getSqlSession().update("updateTraveler", dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Traveler¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numì— í•´ë‹¹í•˜ëŠ” Traveler ì •ë³´ ì‚­ì œ 
 	public void deleteTraveler(int num) {
 
 		getSqlSession().delete("deleteTraveler", num);
 	}
 
-	// TravelerrateÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Traveler ì „ì²´ ëª…ìˆ˜ count
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("travelerTotalCount");

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="traveler">
 	<select id="travelTotalCount" resultType="int">
-           select count(*) from travel
-     </select>
+           select count(*) from traveler
+    </select>
      
 	<insert id="insertTraveler" parameterType="tdto">
-		insert into traveler values(traveler_seq.nextval,#{name},#{nat},#{mobile},#{email1},#{email2},#{addr},#{content},#{img})
+		insert into traveler values(traveler_seq.nextval,#{name},#{nat},#{mobile},#{addr},#{content},#{img},#{id},#{pass},#{email} )
 	</insert>
 	
 	<select id="selectTraveler" parameterType="int" resultType="tdto">
