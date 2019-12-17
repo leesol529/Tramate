@@ -21,4 +21,9 @@
 		delete from traveler where num=#{num}
 	</delete>
 	
+	<!-- 아이디와 비밀번호에 맞는 여행객을 찾는 sql -->
+	<select id="travelerLogin" parameterType="HashMap" resultType="int">
+		select count(*) from traveler where id=#{id} and pass=#{pass}
+	</select>
+	
 </mapper>

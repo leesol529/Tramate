@@ -1,5 +1,7 @@
 package com.tramate.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +38,11 @@ public class TravelerDao extends SqlSessionDaoSupport {
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("travelerTotalCount");
+	}
+	
+	//아이디와 비밀전호에 맞는 여행객이 존재하는지 찾는 메소드
+	public int travelerLogin(Map<String, String> map) {
+		
+		return getSqlSession().selectOne("travelerLogin", map);
 	}
 }

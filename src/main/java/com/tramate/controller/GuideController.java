@@ -2,6 +2,7 @@ package com.tramate.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.tramate.dto.ActivitydataDto;
 import com.tramate.dto.GuideDto;
 import com.tramate.service.GuideService;
+import com.tramate.service.TravelerService;
 import com.tramate.upload.SpringFileWriter;
 
 @RestController
@@ -28,6 +30,9 @@ public class GuideController {
 
 	@Autowired
 	private GuideService service;
+	
+	@Autowired
+	private TravelerService tservice;
 
 	@GetMapping("/guidetotal")
 	public int guideTotalCount() {
@@ -71,6 +76,7 @@ public class GuideController {
 		return service.getGuide(num);
 	}
 
+	// 이미지를 save 폴더에 저장해주는 메소드
 	@RequestMapping(value = "/guide/imageupload", method = RequestMethod.POST)
 	public void insertGuideImage(@RequestParam MultipartFile uploadFile, HttpServletRequest request) {
 		SpringFileWriter fileWriter = new SpringFileWriter();
@@ -79,4 +85,28 @@ public class GuideController {
 		System.out.println("path:" + path);
 		fileWriter.writeFile(uploadFile, path);// save 폴더에 저장해주는메서드
 	}
+
+	// 아이디와 비밀번호가 맞는 유저가 존재하는지 찾아내는 메소드
+	@RequestMapping(value="/user/login", method=RequestMethod.GET)
+	public int guideLogin(@RequestParam String id, @RequestParam String pass) {
+			
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			map.put("pass",pass);
+		
+			//아이디에 맞는 가이드가 존재하는가?
+			int guideok = service.guideLogin(map);
+			int travelerok = tservice.travelerLogin(map);
+			
+			//둘다 1이 아니면, 즉 둘다 만족하는 아이디와 비밀번호가 없으면 로그인 실패다.
+			if(guideok != 1 && travelerok !=1)
+				return 0;
+			//둘중 하나라도 만족하면 로그인 성공.
+			else{
+				return 1;
+			}
+			
+			
+		}
+	
 }

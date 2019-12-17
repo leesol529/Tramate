@@ -1,5 +1,7 @@
 package com.tramate.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class TravelerService {
 		dao.insertTraveler(dto);
 	}
 
-	// num에 해당하는 Traveler 정보 가져오기 
+	// num에 해당하는 Traveler 정보 가져오기
 	public TravelerDto getTraveler(int num) {
 
 		return dao.getTraveler(num);
@@ -30,7 +32,7 @@ public class TravelerService {
 		dao.updateTraveler(dto);
 	}
 
-	// num에 해당하는 Traveler 정보 삭제 
+	// num에 해당하는 Traveler 정보 삭제
 	public void deleteTraveler(int num) {
 
 		dao.deleteTraveler(num);
@@ -40,6 +42,12 @@ public class TravelerService {
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
+	}
+
+	// 아이디와 비밀전호에 맞는 여행객이 존재하는지 찾는 메소드
+	public int travelerLogin(Map<String, String> map) {
+
+		return dao.travelerLogin(map);
 	}
 
 }

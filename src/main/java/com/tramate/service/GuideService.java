@@ -1,6 +1,7 @@
 package com.tramate.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,39 +21,45 @@ public class GuideService {
 		return dao.getTotalCount();
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertGuide(GuideDto dto) {
 
 		dao.insertGuide(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ ¼±ÅÃÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public GuideDto getGuide(int num) {
 
 		return dao.getGuide(num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateGuide(GuideDto dto) {
 
 		dao.updateGuide(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ Áö¿ì´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteGuide(int num) {
 
 		dao.deleteGuide(num);
 	}
 
-	// Spot°ú °ü·ÃµÈ GuideÀÇ ÃÑ ¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Guideï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCountRelatedSpot(String spot) {
 
 		return dao.getTotalCountRelatedSpot(spot);
 	}
-	
-	// Spot°ú °ü·ÃµÈ Guide¸¦ ·£´ıÀ¸·Î °¡Á®¿À´Â ¸Ş¼Òµå
+
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<ActivitydataDto> guideRandomList(java.util.Map<String, String> map) {
 
 		return dao.guideRandomList(map);
+	}
+
+	// ë¡œê·¸ì¸ ê°€ëŠ¥í•œ ì•„ì´ë””ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public int guideLogin(Map<String, String> map) {
+
+		return dao.guideLogin(map);
 	}
 }

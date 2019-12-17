@@ -25,4 +25,9 @@
      	select * from guiderate
      </select>
      
+     <!-- 해당 아이디와 비밀번호에 맞는게 있는지, 즉 로그인 가능한 아이디가 있는지 확인하는 sql -->
+     <select id="guideLogin" parameterType="HashMap" resultType="int">
+     	select count(*) from guide where id=#{id} and pass=#{pass}
+     </select>
+     
 </mapper>

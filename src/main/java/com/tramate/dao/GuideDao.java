@@ -1,6 +1,7 @@
 package com.tramate.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -11,46 +12,51 @@ import com.tramate.dto.GuideDto;
 @Repository
 public class GuideDao extends SqlSessionDaoSupport {
 
-	// GuideÀÇ ÃÑ °¹¼ö¸¦ ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	// Guideï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("GuideTotalCount");
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertGuide(GuideDto dto) {
 
 		getSqlSession().insert("insertGuide", dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ ¼±ÅÃÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public GuideDto getGuide(int num) {
 
 		return getSqlSession().selectOne("selectGuide", num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateGuide(GuideDto dto) {
 
 		getSqlSession().update("updateGuide", dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ Guide¸¦ Áö¿ì´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteGuide(int num) {
 
 		getSqlSession().delete("deleteGuide", num);
 	}
 
-	// Spot°ú °ü·ÃµÈ GuideÀÇ ÃÑ ¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Guideï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCountRelatedSpot(String spot) {
 
 		return getSqlSession().selectOne("guideCountRelatedSpot", spot);
 	}
 
-	// Spot°ú °ü·ÃµÈ Guide¸¦ ·£´ıÀ¸·Î °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Guideï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<ActivitydataDto> guideRandomList(java.util.Map<String, String> map) {
 
 		return getSqlSession().selectList("guideRandomList", map);
+	}
+	//ë¡œê·¸ì¸ ê°€ëŠ¥í•œ ì•„ì´ë””ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public int guideLogin(Map<String, String> map) {
+		
+		return getSqlSession().selectOne("guideLogin",map);
 	}
 
 }
