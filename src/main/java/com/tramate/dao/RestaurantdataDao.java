@@ -11,47 +11,51 @@ import com.tramate.dto.RestaurantdataDto;
 @Repository
 public class RestaurantdataDao extends SqlSessionDaoSupport {
 
-	// Dto¸¦ ÅëÇØ Restaurantdata¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Restaurantdataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertRestaurantData(RestaurantdataDto dto) {
 
 		getSqlSession().insert("insertRestaurantData", dto);
 	}
 
-	// numÀ» ÅëÇØ Restaurantdata¸¦ ¾ò´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Restaurantdataï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public RestaurantdataDto getRestaurantData(int num) {
 
 		return getSqlSession().selectOne("selectRestaurantData", num);
 	}
 
-	// Dto¸¦ ÅëÇØ Restaurantdata¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Restaurantdataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateRestaurantData(RestaurantdataDto dto) {
 
 		getSqlSession().update("updateRestaurantData", dto);
 	}
 
-	// numÀ» ÅëÇØ Restaurantdata¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Restaurantdataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteRestaurantData(int num) {
 
 		getSqlSession().delete("deleteRestaurantData", num);
 	}
 
-	// RestaurantDataÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// RestaurantDataï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("restaurantTotalCount");
 	}
 
-	// Spot°ú °ü·ÃµÈ RestaurantÀÇ ÃÑ ¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Restaurantï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCountRelatedSpot(String spot) {
 
 		return getSqlSession().selectOne("restaurantCountRelatedSpot", spot);
 	}
 
-	// Spot°ú °ü·ÃµÈ Restaurant¸¦ ·£´ıÀ¸·Î °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Restaurantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<RestaurantdataDto> RestaurantRandomList(java.util.Map<String, String> map) {
 
 		return getSqlSession().selectList("restaurantRandomList", map);
 	}
 	
-	
+	//ê°€ì´ë“œì™€ ê´€ë ¨ëœ ë ˆìŠ¤í† ë‘ë°ì´í„°ë¥¼ ì°¾ëŠ” ë©”ì†Œë“œ
+	public List<RestaurantdataDto> restaurantRelatedGuide(int gnum){
+		
+		return getSqlSession().selectList("restaurantRelatedGuide",gnum);
+	}
 }

@@ -42,4 +42,9 @@
      	 ]]> 
      	
      </select>
+     
+     <!-- 가이드 관련된 식당을 찾는 sql -->
+     <select id="restaurantRelatedGuide" parameterType="int" resultType="rddto">
+     	select * from restaurantdata where gnum=#{gnum}
+     </select>
 </mapper>

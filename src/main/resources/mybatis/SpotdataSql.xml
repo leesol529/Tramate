@@ -42,4 +42,9 @@
      	 ]]> 
      	
      </select>
+     
+     <!-- 가이드와 관련된 관괌명소를 찾는 sql -->
+     <select id="spotRelatedGuide" parameterType="int" resultType="sddto">
+     	select * from spotdata where gnum=#{gnum}
+     </select>
 </mapper>

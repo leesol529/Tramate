@@ -16,45 +16,51 @@ public class SpotdataService {
 	@Autowired
 	private SpotdataDao dao;
 
-	// DtoÀ» ÅëÇØ ÇÏ³ªÀÇ SpotData¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ SpotDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertSpotData(SpotdataDto dto) {
 
 		dao.insertSpotData(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ SpotData¸¦ ÀĞ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ SpotDataï¿½ï¿½ ï¿½Ğ´ï¿½ ï¿½Ş¼Òµï¿½
 	public SpotdataDto getSpotData(int num) {
 
 		return dao.getSpotData(num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ SpotData¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ SpotDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateSpotData(SpotdataDto dto) {
 
 		dao.updateSpotData(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ SpotData¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ SpotDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteSpotData(int num) {
 
 		dao.deleteSpotData(num);
 	}
 
-	// ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
 	}
 
-	// Spot°ú °ü·ÃµÈ SpotÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Spotï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCountRelatedSpot(String spot) {
 
 		return dao.getTotalCountRelatedSpot(spot);
 	}
 
-	// Spot°ú °ü·ÃµÈ °ü±¤Áö¸¦ ·£´ıÀ¸·Î °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<SpotdataDto> spotRandomList(Map<String, String> map) {
 
 		return dao.spotRandomList(map);
+	}
+
+	// ê°€ì´ë“œì™€ ê´€ë ¨ëœ ê´€ê´‘ëª…ì†Œë¥¼ ì°¾ëŠ” ë©”ì†Œë“œ
+	public List<SpotdataDto> spotRelatedGuide(int gnum) {
+
+		return dao.spotRelatedGuide(gnum);
 	}
 }

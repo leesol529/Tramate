@@ -15,51 +15,57 @@ public class ActivitydataService {
 	@Autowired
 	private ActivitydataDao dao;
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ ActivityData ¸¦ ¹İÈ¯ÇÑ´Ù.
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ActivityData ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	public ActivitydataDto gettActivityData(int num) {
 
 		return dao.gettActivityData(num);
 	}
 
-	// ActivityDto¸¦ ÆÄ¶ó¹ÌÅÍ·Î ÀÔ·Â¹Ş¾Æ insert¸¦ ÇÏ´Â ¸Ş¼Òµå
+	// ActivityDtoï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ô·Â¹Ş¾ï¿½ insertï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertActivityData(ActivitydataDto dto) {
 
 		dao.insertActivityData(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ ActivityData¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ActivityDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteActivityData(int num) {
 
 		dao.deleteActivityData(num);
 	}
 
-	// ActivityDto¸¦ ÆÄ¸¶¹ÌÅÍ·Î ÀÔ·Â¹Ş¾Æ update¸¦ ÇÏ´Â ¸Ş¼Òµå
+	// ActivityDtoï¿½ï¿½ ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ô·Â¹Ş¾ï¿½ updateï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateActivityData(ActivitydataDto dto) {
 
 		dao.updateActivityData(dto);
 	}
 
-	// ¸ğµç ActivityData¸¦ ¸®½ºÆ®·Î °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ï¿½ ActivityDataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<ActivitydataDto> getActivityDataList() {
 
 		return dao.getActivityDataList();
 	}
 
-	// ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
 	}
 
-	// Spot°ú °ü·ÃµÈ ActivityÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Activityï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCountRelatedSpot(String spot) {
 
 		return dao.getTotalCountRelatedSpot(spot);
 	}
 
-	// Spot°ú °ü·ÃµÈ Activity¸¦ ·£´ıÀ¸·Î 6°³ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Activityï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 6ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<ActivitydataDto> activityRandomList(java.util.Map<String, String> map) {
 
 		return dao.activityRandomList(map);
+	}
+
+	// guideì™€ ê´€ë ¨ëœ activityë¥¼ ì°¾ëŠ” ë©”ì†Œë“œ
+	public List<ActivitydataDto> activityRelatedGuid(int gnum) {
+
+		return dao.activityRelatedGuid(gnum);
 	}
 }

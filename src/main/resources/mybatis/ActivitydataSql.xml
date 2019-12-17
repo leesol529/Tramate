@@ -47,4 +47,9 @@
      	
      </select>
      
+     <!-- 가이드와 관련된 액티비티들을 찾는 sql -->
+     <select id="activityRelatedGuide" parameterType="int" resultType="addto">
+     	select * from activitydata where gnum=#{gnum}
+     </select>
+     
 </mapper>
