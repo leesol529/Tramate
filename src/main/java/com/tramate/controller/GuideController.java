@@ -109,4 +109,9 @@ public class GuideController {
 			
 		}
 	
+	//id에 해당하는 gnum 가져오기
+	@RequestMapping(value="/guide/choice/gnum", method=RequestMethod.POST)
+	public int selectOneGuide(@RequestParam String id) {
+		return service.selectOneGuide(id);
+	}
 }

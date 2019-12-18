@@ -62,4 +62,9 @@ public class GuideService {
 
 		return dao.guideLogin(map);
 	}
+	
+	//id에 해당하는 gnum 가져오기
+	public int selectOneGuide(String id) {
+		return dao.selectOneGuide(id);
+	}
 }

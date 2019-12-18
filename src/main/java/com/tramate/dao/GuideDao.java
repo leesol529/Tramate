@@ -59,4 +59,9 @@ public class GuideDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("guideLogin",map);
 	}
 
+	//id에 해당하는 gnum 가져오기
+	public int selectOneGuide(String id) {
+		return getSqlSession().selectOne("selectOneGuide", id);
+	}
+	
 }

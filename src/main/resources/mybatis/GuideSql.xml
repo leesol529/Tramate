@@ -43,4 +43,8 @@
      	
      </select>
      
+     <select id="selectOneGuide" parameterType="String" resultType="int">
+   		select gnum from guide where id=#{id}
+     </select>
+     
 </mapper>

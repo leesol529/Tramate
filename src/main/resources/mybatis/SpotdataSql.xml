@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spotData">
-	<select id="spotTotalCount" resultType="int">
-           select count(*) from spotdata
+	 <select id="spotTotalCount" resultType="int">
+        select count(*) from spotdata
      </select>
      
      <insert id="insertSpotData" parameterType="sddto">
@@ -10,7 +10,7 @@
      </insert>
      
      <select id="selectSpotData" parameterType="int" resultType="sddto">
-     	select * from spotdata where num={num}
+     	select * from spotdata where num=#{num}
      </select>
      
      <update id="updateSpotData" parameterType="sddto">
@@ -24,8 +24,8 @@
       <!-- spot과 관련된 관광지의 총 갯수를 구하는 sql -->
      <select id="spotCountRelatedSpot" parameterType="String" resultType="int">
      	select count(*)
-     	from guide g, spot s
-     	where g.spot=#{spot} and g.num=s.gnum
+     	 from guide g, spot s
+     	 where g.spot=#{spot} and g.num=s.gnum
      </select>
      
       <!-- spot과 관련된 spot 8개를 랜덤으로 고르는 sql -->
@@ -33,12 +33,12 @@
      	
      	 <![CDATA[
      	 select *
-     	 from (select rownum as rn, z.*
-     	 from (select a.*
-     	 from spotdata a, guide g
-     	 where g.spot=#{spot} and g.num=a.gnum) z
-     	 where rownum<=#{end})
-     	 where rn <=#{start}
+     	  from (select rownum as rn, z.*
+     	  from (select a.*
+     	  from spotdata a, guide g
+     	  where g.spot=#{spot} and g.num=a.gnum) z
+     	  where rownum<=#{end})
+     	  where rn <=#{start}
      	 ]]> 
      	
      </select>
