@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tramate.dto.GuideDto;
 import com.tramate.dto.TravelerDto;
 import com.tramate.service.TravelerService;
 import com.tramate.upload.SpringFileWriter;
@@ -42,4 +43,12 @@ public class TravelerController {
 		System.out.println("path:" + path);
 		fileWriter.writeFile(uploadFile, path);// save 폴더에 저장해주는메서드
 	}
+	
+	//traveler 에서 해당 num 정보 가져오기
+	@RequestMapping(value = "/traveler/select", method = RequestMethod.GET)
+	public TravelerDto selecttraveler(@RequestParam int num) {
+		return service.getTraveler(num);
+	}
+	
+	
 }
