@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tramate.dto.SpotdataDto;
@@ -16,24 +18,32 @@ public class SpotdataController {
 	@Autowired
 	private SpotdataService service;
 	
-	//Spot°ú °ü·ÃµÈ °ü±¤¸í¼ÒÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Þ¼Òµå
+	//Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	@GetMapping("/spotTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot() {
 		
-		return service.getTotalCountRelatedSpot("´Ù³¶");
+		return service.getTotalCountRelatedSpot("ï¿½Ù³ï¿½");
 				
 	}
 	
-	//Spot°ú °ü·ÃµÈ °ü±¤¸í¼Ò¸¦ ·£´ýÀ¸·Î °¡Á®¿À´Â ¸Þ¼Òµå
-	//ÃßÈÄ spot, start ,endÀÇ °ªÀ» Á¶Á¤ÇØ¾ß ÇÑ´Ù.
+	//Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+	//ï¿½ï¿½ï¿½ï¿½ spot, start ,endï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 	@GetMapping("/spotRandom")
 	public List<SpotdataDto> spotRandomList(){
 		
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "´Ù³¶");
+		map.put("spot", "ï¿½Ù³ï¿½");
 		map.put("start","0");
 		map.put("end","5");
 		
 		return service.spotRandomList(map);
+	}
+	
+	@PostMapping(value="/guide/choice/attraction_input")
+	public void insertAttractionList(@RequestBody List<SpotdataDto> list) {
+		for(SpotdataDto dto: list) {
+			System.out.println(dto);
+			service.insertSpotData(dto);
+		}
 	}
 }
