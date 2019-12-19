@@ -3,37 +3,69 @@ package com.tramate.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.tramate.dto.ActivitydataDto;
 import com.tramate.dto.RestaurantdataDto;
 import com.tramate.service.RestaurantdataService;
+import com.tramate.upload.SpringFileWriter;
 
 @RestController
+@CrossOrigin
 public class RestaurantdataController {
 
 	@Autowired
 	private RestaurantdataService service;
 
-	// Spot°ú °ü·ÃµÈ RestaurantÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Restaurantï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	@GetMapping("/restaurantTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot() {
 
-		return service.getTotalCountRelatedSpot("´Ù³¶");
+		return service.getTotalCountRelatedSpot("ï¿½Ù³ï¿½");
 
 	}
 
-	// Spot°ú °ü·ÃµÈ Restaurant¸¦ ·£´ıÀ¸·Î °¡Á®¿À´Â ¸Ş¼Òµå
-	//ÃßÈÄ spot, start ,endÀÇ °ªÀ» Á¶Á¤ÇØ¾ß ÇÑ´Ù.
+	// Spotï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Restaurantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
+	//ï¿½ï¿½ï¿½ï¿½ spot, start ,endï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 	@GetMapping("/restaurantRandom")
 	public List<RestaurantdataDto> RestaurantRandomList() {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "´Ù³¶");
+		map.put("spot", "ï¿½Ù³ï¿½");
 		map.put("start", "0");
 		map.put("end", "5");
 		
 		return service.RestaurantRandomList(map);
+	}
+	
+	//restaurantformì— ì´ë¯¸ì§€ ì—…ë¡œë“œ ì‹œ ì„œë²„ì— ì´ë¯¸ì§€ ì €ì¥ 
+	@RequestMapping(value = "/guide/choice/restaurant_img", method = RequestMethod.POST)
+	public @ResponseBody void insertTravelerImage(
+		   @RequestParam MultipartFile uploadFile, 
+		   HttpServletRequest request) {
+		
+		SpringFileWriter fileWriter = new SpringFileWriter();
+		// ì €ì¥í•  path êµ¬í•˜ê¸°
+		String path = request.getSession().getServletContext().getRealPath("/save");
+		System.out.println("path:" + path);
+		fileWriter.writeFile(uploadFile, path);// save í´ë”ì— ì €ì¥í•´ì£¼ëŠ”ë©”ì„œë“œ
+	}
+	
+	@RequestMapping(value="/guide/choice/restaurant_input", method=RequestMethod.POST)
+	public void insertAttractionList(@RequestBody List<RestaurantdataDto> data) {
+		for(RestaurantdataDto dto: data) {
+			service.insertRestaurantData(dto);
+		}
 	}
 }

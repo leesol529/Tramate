@@ -37,4 +37,10 @@ public class SpotdataDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	@Override
+	public String toString() {
+		return "SpotdataDto [num=" + num + ", gnum=" + gnum + ", name=" + name + ", img=" + img + ", content=" + content
+				+ "]";
+	}
+	
 }

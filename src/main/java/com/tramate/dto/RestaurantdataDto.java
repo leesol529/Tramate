@@ -5,9 +5,8 @@ public class RestaurantdataDto {
 	private int gnum;
 	private String type;
 	private String img;
-	private int price;
+	private String price;
 	private String content;
-	
 	public int getNum() {
 		return num;
 	}
@@ -32,10 +31,10 @@ public class RestaurantdataDto {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getContent() {
@@ -44,4 +43,6 @@ public class RestaurantdataDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	
 }
