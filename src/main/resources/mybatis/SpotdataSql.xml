@@ -33,12 +33,12 @@
      	
      	 <![CDATA[
      	 select *
-     	  from (select rownum as rn, z.*
-     	  from (select a.*
-     	  from spotdata a, guide g
-     	  where g.spot=#{spot} and g.num=a.gnum) z
-     	  where rownum<=#{end})
-     	  where rn <=#{start}
+     	 from (select rownum as rn, z.*
+     	 from (select a.*
+    	 from spotdata a, guide g
+       	 where g.spot=#{spot} and g.num=a.gnum) z
+     	 where rownum<=#{end})
+     	 where rn >=#{start}
      	 ]]> 
      	
      </select>

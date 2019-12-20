@@ -38,7 +38,7 @@
      	 from guide g
      	 where g.spot=#{spot}) z
      	 where rownum<=#{end})
-     	 where rn <=#{start}
+     	 where rn >=#{start}
      	 ]]> 
      	
      </select>

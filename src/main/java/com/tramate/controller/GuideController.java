@@ -87,27 +87,26 @@ public class GuideController {
 	}
 
 	// 아이디와 비밀번호가 맞는 유저가 존재하는지 찾아내는 메소드
-	@RequestMapping(value="/user/login", method=RequestMethod.GET)
+	@RequestMapping(value="/user/login", method=RequestMethod.POST)
 	public int guideLogin(@RequestParam String id, @RequestParam String pass) {
 			
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", id);
-			map.put("pass",pass);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("pass",pass);
+	
+		//아이디에 맞는 가이드가 존재하는가?
+		int guideok = service.guideLogin(map);
+		int travelerok = tservice.travelerLogin(map);
 		
-			//아이디에 맞는 가이드가 존재하는가?
-			int guideok = service.guideLogin(map);
-			int travelerok = tservice.travelerLogin(map);
-			
-			//둘다 1이 아니면, 즉 둘다 만족하는 아이디와 비밀번호가 없으면 로그인 실패다.
-			if(guideok != 1 && travelerok !=1)
-				return 0;
-			//둘중 하나라도 만족하면 로그인 성공.
-			else{
-				return 1;
-			}
-			
-			
-		}
+		//guide 테이블에서 정보 일치 시 1, traveler 테이블에서 정보 일치 시 2, 일치 정보 없을 때 0 반환 
+		if(guideok==1)
+			return 1;
+		else if(travelerok==1)
+			return 2;
+		else
+			return 0;
+
+	}
 	
 	//id에 해당하는 gnum 가져오기
 	@RequestMapping(value="/guide/choice/gnum", method=RequestMethod.POST)

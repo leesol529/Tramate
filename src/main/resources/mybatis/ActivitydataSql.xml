@@ -42,7 +42,7 @@
      	 from activitydata a, guide g
      	 where g.spot=#{spot} and g.num=a.gnum) z
      	 where rownum<=#{end})
-     	 where rn <=#{start}
+     	 where rn >=#{start}
      	 ]]> 
      	
      </select>
