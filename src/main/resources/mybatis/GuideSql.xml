@@ -47,9 +47,6 @@
    		select num from guide where id=#{id}
      </select>
      
-     <!-- 지역을 parameter로 받아서 그 지역에 맞는 가이드들의 pk를 가져오는  sql -->
-     <select id="guideRelatedSpot" parameterType="String" resultType="gdto">
-     	select * from guide where spot=#{spot}
-     </select>
+  
      
 </mapper>

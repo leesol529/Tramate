@@ -3,6 +3,7 @@ package com.tramate.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,19 +45,25 @@ public class GuideController {
 	@GetMapping("/guideTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot() {
 
-		return service.getTotalCountRelatedSpot("�ٳ�");
+		return service.getTotalCountRelatedSpot("다낭");
 
 	}
 
 	// Spot�� ���õ� Guide�� �������� �������� �޼ҵ�
 	// ���� spot, start ,end�� ���� �����ؾ� �Ѵ�.
 	@GetMapping("/guideRandom")
-	public List<ActivitydataDto> guideRandomList() {
+	public List<GuideDto> guideRandomList() {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
+		int guideTotalCount = service.getTotalCountRelatedSpot("다낭");
+		System.out.println("다낭의 총 가이드 수 : "+guideTotalCount);
+		Random rd = new Random();
+		int startNum = rd.nextInt(guideTotalCount)+1;
+		if(startNum >= guideTotalCount-4) startNum = guideTotalCount-4;
+		System.out.println("startNum :" +startNum);
 		map.put("spot", "다낭");
-		map.put("start", "0");
-		map.put("end", "5");
+		map.put("start", ""+startNum);
+		map.put("end", ""+(startNum+4));
 
 		return service.guideRandomList(map);
 	}

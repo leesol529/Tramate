@@ -32,7 +32,7 @@ public class SpotdataController {
 	@GetMapping("/spotTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot() {
 		
-		return service.getTotalCountRelatedSpot("�ٳ�");
+		return service.getTotalCountRelatedSpot("다낭");
 				
 	}
 	
@@ -42,7 +42,7 @@ public class SpotdataController {
 	public List<SpotdataDto> spotRandomList(){
 		
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "�ٳ�");
+		map.put("spot", "다낭");
 		map.put("start","0");
 		map.put("end","5");
 		
@@ -69,4 +69,6 @@ public class SpotdataController {
 			service.insertSpotData(dto);
 		}
 	}
+	
+	
 }

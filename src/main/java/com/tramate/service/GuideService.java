@@ -52,7 +52,7 @@ public class GuideService {
 	}
 
 	// Spot�� ���õ� Guide�� �������� �������� �޼ҵ�
-	public List<ActivitydataDto> guideRandomList(java.util.Map<String, String> map) {
+	public List<GuideDto> guideRandomList(java.util.Map<String, String> map) {
 
 		return dao.guideRandomList(map);
 	}

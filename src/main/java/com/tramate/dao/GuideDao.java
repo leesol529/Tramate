@@ -49,7 +49,7 @@ public class GuideDao extends SqlSessionDaoSupport {
 	}
 
 	// Spot�� ���õ� Guide�� �������� �������� �޼ҵ�
-	public List<ActivitydataDto> guideRandomList(java.util.Map<String, String> map) {
+	public List<GuideDto> guideRandomList(java.util.Map<String, String> map) {
 
 		return getSqlSession().selectList("guideRandomList", map);
 	}
