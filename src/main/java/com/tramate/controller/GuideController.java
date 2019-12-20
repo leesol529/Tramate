@@ -49,13 +49,12 @@ public class GuideController {
 
 	}
 
-	// Spot�� ���õ� Guide�� �������� �������� �޼ҵ�
-	// ���� spot, start ,end�� ���� �����ؾ� �Ѵ�.
-	@GetMapping("/guideRandom")
-	public List<GuideDto> guideRandomList() {
+	//spot과 관련된 guide를 5명 랜덤으로 뽑는 메소드 ex) 다낭과 관련된 guide 랜덤 5명
+	@PostMapping("/guideRandomRelatedSpot")
+	public List<GuideDto> guideRandomList(@RequestParam String spot) {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		int guideTotalCount = service.getTotalCountRelatedSpot("다낭");
+		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
 		System.out.println("다낭의 총 가이드 수 : "+guideTotalCount);
 		Random rd = new Random();
 		int startNum = rd.nextInt(guideTotalCount)+1;

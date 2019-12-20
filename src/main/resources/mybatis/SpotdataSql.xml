@@ -24,7 +24,7 @@
       <!-- spot과 관련된 관광지의 총 갯수를 구하는 sql -->
      <select id="spotCountRelatedSpot" parameterType="String" resultType="int">
      	select count(*)
-     	 from guide g, spot s
+     	 from guide g, spotdata s
      	 where g.spot=#{spot} and g.num=s.gnum
      </select>
      

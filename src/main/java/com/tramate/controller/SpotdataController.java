@@ -2,6 +2,7 @@ package com.tramate.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,17 +37,23 @@ public class SpotdataController {
 				
 	}
 	
-	//Spot�� ���õ� ������Ҹ� �������� �������� �޼ҵ�
-	//���� spot, start ,end�� ���� �����ؾ� �Ѵ�.
-	@GetMapping("/spotRandom")
-	public List<SpotdataDto> spotRandomList(){
+	//지역과 관련된 관광명소 5개를 랜덤으로 뽑는 메소드
+	@PostMapping("/spotRandomRelatedSpot")
+	public List<SpotdataDto> spotRandomList(@RequestParam String spot){
 		
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "다낭");
-		map.put("start","0");
-		map.put("end","5");
-		
+		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
+		System.out.println("다낭의 총 Spot갯수 : "+guideTotalCount);
+		Random rd = new Random();
+		int startNum = rd.nextInt(guideTotalCount)+1;
+		if(startNum >= guideTotalCount-4) startNum = guideTotalCount-4;
+		System.out.println("startNum :" +startNum);
+		map.put("spot", spot);
+		map.put("start", ""+startNum);
+		map.put("end", ""+(startNum+4));
+
 		return service.spotRandomList(map);
+		
 	}
 	
 	//attractionform에 이미지 업로드 시 서버에 이미지 저장 
