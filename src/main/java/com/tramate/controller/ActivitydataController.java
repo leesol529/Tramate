@@ -2,12 +2,14 @@ package com.tramate.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,13 +43,19 @@ public class ActivitydataController {
 	// Spot�� ���õ� Activity�� �������� 6�� �������� �޼ҵ�
 	//���� spot, start ,end�� ���� �����ؾ� �Ѵ�.
 	
-	@GetMapping("/activityRandom")
-	public List<ActivitydataDto> activityRandomList() {
+	@PostMapping("/activityRandomRelatedSpot")
+	public List<ActivitydataDto> activityRandomList(@RequestParam String spot) {
 		
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "�ٳ�");
-		map.put("start","0");
-		map.put("end","5");
+		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
+		System.out.println("다낭의 총 Activity 갯수 : "+guideTotalCount);
+		Random rd = new Random();
+		int startNum = rd.nextInt(guideTotalCount)+1;
+		if(startNum >= guideTotalCount-4) startNum = guideTotalCount-4;
+		System.out.println("startNum :" +startNum);
+		map.put("spot", spot);
+		map.put("start", ""+startNum);
+		map.put("end", ""+(startNum+4));
 		
 		return service.activityRandomList(map);
 	}

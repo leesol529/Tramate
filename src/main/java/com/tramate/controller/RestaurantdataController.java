@@ -2,12 +2,14 @@ package com.tramate.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,13 +40,19 @@ public class RestaurantdataController {
 
 	// Spot�� ���õ� Restaurant�� �������� �������� �޼ҵ�
 	//���� spot, start ,end�� ���� �����ؾ� �Ѵ�.
-	@GetMapping("/restaurantRandom")
-	public List<RestaurantdataDto> RestaurantRandomList() {
+	@PostMapping("/restaurantRandomRelatedSpot")
+	public List<RestaurantdataDto> RestaurantRandomList(@RequestParam String spot) {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
-		map.put("spot", "�ٳ�");
-		map.put("start", "0");
-		map.put("end", "5");
+		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
+		System.out.println("다낭의 총 restaurant 갯수 : "+guideTotalCount);
+		Random rd = new Random();
+		int startNum = rd.nextInt(guideTotalCount)+1;
+		if(startNum >= guideTotalCount-4) startNum = guideTotalCount-4;
+		System.out.println("startNum :" +startNum);
+		map.put("spot", spot);
+		map.put("start", ""+startNum);
+		map.put("end", ""+(startNum+4));
 		
 		return service.RestaurantRandomList(map);
 	}
