@@ -21,7 +21,7 @@
      	delete from guiderate where num=#{num}
      </delete>
      
-     <select id="selectGuideRateList">
+     <select id="selectGuideRateList" resultType="grdto">
      	select * from guiderate
      </select>
      

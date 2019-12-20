@@ -64,4 +64,10 @@ public class GuideDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("selectOneGuide", id);
 	}
 	
+	//지역을 paramete로 받아서 가이드들의 pk를 가져오는 메소드
+	public List<GuideDto> guideRelatedSpot(String spot){
+		
+		return getSqlSession().selectList("guideRelatedSpot", spot);
+	}
+	
 }

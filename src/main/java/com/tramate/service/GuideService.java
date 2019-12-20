@@ -62,9 +62,15 @@ public class GuideService {
 
 		return dao.guideLogin(map);
 	}
-	
-	//id에 해당하는 gnum 가져오기
+
+	// id에 해당하는 gnum 가져오기
 	public int selectOneGuide(String id) {
 		return dao.selectOneGuide(id);
+	}
+
+	// 지역을 paramete로 받아서 가이드들의 pk를 가져오는 메소드
+	public List<GuideDto> guideRelatedSpot(String spot) {
+
+		return dao.guideRelatedSpot(spot);
 	}
 }

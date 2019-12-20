@@ -114,4 +114,11 @@ public class GuideController {
 	public int selectOneGuide(@RequestParam String id) {
 		return service.selectOneGuide(id);
 	}
+	
+	//spot에 해당하는 가이드들의 pk값을 넘겨주는 메소드
+	@RequestMapping(value="/guide/related/spot",method=RequestMethod.POST)
+	public List<GuideDto> guideRelatedSpot(@RequestParam String spot){
+		
+		return service.guideRelatedSpot(spot);
+	}
 }
