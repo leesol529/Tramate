@@ -32,7 +32,7 @@ public class RestaurantdataController {
 
 	// Spot�� ���õ� Restaurant�� �� ������ �������� �޼ҵ�
 	@GetMapping("/restaurantTotalCountRelatedSpot")
-	public int guideTotalCountRelatedSpot(@RequestParam String spot) {
+	public int guideTotalCountRelatedSpot(String spot) {
 
 		return service.getTotalCountRelatedSpot(spot);
 

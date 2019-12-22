@@ -31,7 +31,7 @@ public class SpotdataController {
 	
 	//Spot�� ���õ� ��������� �� ������ �������� �޼ҵ�
 	@GetMapping("/spotTotalCountRelatedSpot")
-	public int guideTotalCountRelatedSpot(@RequestParam String spot) {
+	public int guideTotalCountRelatedSpot(String spot) {
 		
 		return service.getTotalCountRelatedSpot(spot);
 				

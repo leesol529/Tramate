@@ -43,7 +43,7 @@ public class GuideController {
 
 	// Spot�� ���õ� guide�� �� ���� ���ϴ� �޼ҵ�
 	@GetMapping("/guideTotalCountRelatedSpot")
-	public int guideTotalCountRelatedSpot(@RequestParam String spot) {
+	public int guideTotalCountRelatedSpot(String spot) {
 
 		return service.getTotalCountRelatedSpot(spot);
 
