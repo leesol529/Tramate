@@ -60,7 +60,7 @@ public class GuideController {
 		int startNum = rd.nextInt(guideTotalCount)+1;
 		if(startNum >= guideTotalCount-4 && guideTotalCount >=4) startNum = guideTotalCount-4;
 		System.out.println("startNum :" +startNum);
-		map.put("spot", "다낭");
+		map.put("spot", spot);
 		map.put("start", ""+startNum);
 		map.put("end", ""+(startNum+4));
 
