@@ -34,9 +34,9 @@ public class ActivitydataController {
 	//Spot�� ���õ� Activity�� �� ������ �������� �޼ҵ�
 	
 	@GetMapping("/activityTotalCountRelatedSpot")
-	public int guideTotalCountRelatedSpot() {
+	public int guideTotalCountRelatedSpot(@RequestParam String spot) {
 
-		return service.getTotalCountRelatedSpot("�ٳ�");
+		return service.getTotalCountRelatedSpot(spot);
 
 	}
 
@@ -48,10 +48,10 @@ public class ActivitydataController {
 		
 		java.util.Map<String, String> map = new HashMap<String, String>();
 		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
-		System.out.println("다낭의 총 Activity 갯수 : "+guideTotalCount);
+		System.out.println(spot+"의 총 Activity 갯수 : "+guideTotalCount);
 		Random rd = new Random();
 		int startNum = rd.nextInt(guideTotalCount)+1;
-		if(startNum >= guideTotalCount-4) startNum = guideTotalCount-4;
+		if(startNum >= guideTotalCount-4 && guideTotalCount>=4) startNum = guideTotalCount-4;
 		System.out.println("startNum :" +startNum);
 		map.put("spot", spot);
 		map.put("start", ""+startNum);
