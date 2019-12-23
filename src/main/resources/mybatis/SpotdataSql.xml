@@ -31,8 +31,8 @@
      <!-- continent과 관련된 Attraction의 총 수를 구하는 sql -->
      <select id="spotCountRelatedContinent" parameterType="String" resultType="int">
      	select count(*)
-     	from spotdata s
-     	where s.continent=#{continent}
+     	from spotdata s, guide g
+     	where g.continent=#{continent} and g.num=s.gnum
      </select>
      
       <!-- spot과 관련된 spot 8개를 랜덤으로 고르는 sql -->
@@ -50,15 +50,15 @@
      	
      </select>
      
-      <!-- spot과 관련된 spot 8개를 랜덤으로 고르는 sql -->
+      <!-- Continent과 관련된 spot 8개를 랜덤으로 고르는 sql -->
      <select id="spotRandomListRealatedContinent" parameterType="HashMap" resultType="sddto">
      	
      	 <![CDATA[
      	 select *
      	 from (select rownum as rn, z.*
-     	 from (select a.*
-    	 from spotdata a, guide g
-       	 where g.continent=#{continent} and g.num=a.gnum) z
+     	 from (select s.*,g.continent
+    	 from spotdata s, guide g
+       	 where g.continent=#{continent} and g.num=s.gnum) z
      	 where rownum<=#{end})
      	 where rn >=#{start}
      	 ]]> 

@@ -35,8 +35,8 @@
       <!-- continent과 관련된 액티비티의 총 수를 구하는 sql -->
      <select id="activityCountRelatedContinent" parameterType="String" resultType="int">
      	select count(*)
-     	from activitydata a
-     	where a.continent=#{continent}
+     	from activitydata a, guide g
+     	where g.continent=#{continent} and g.num=a.gnum
      </select>
      
      <!-- spot과 관련된 액티비티의 6개를 랜덤으로 고르는 sql -->
@@ -60,7 +60,7 @@
      	 <![CDATA[
      	 select *
      	 from (select rownum as rn, z.*
-     	 from (select a.*
+     	 from (select a.*,g.continent
      	 from activitydata a, guide g
      	 where g.continent=#{continent} and g.num=a.gnum) z
      	 where rownum<=#{end})

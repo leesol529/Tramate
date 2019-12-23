@@ -63,6 +63,7 @@ public class ActivitydataController {
 	}
 
 	// Continent와 관랸 있는 Activity 5개를 랜덤으로 뽑는 메소드
+	@PostMapping("/activity/randomlist/continent")
 	public List<ActivitydataDto> ActivityRandomListRelatedContinent(@RequestParam String continent) {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();

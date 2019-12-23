@@ -83,6 +83,7 @@ public class GuideController {
 		map.put("continent", continent);
 		map.put("start", "" + startNum);
 		map.put("end", "" + (startNum + 4));
+		System.out.println(service.guideRandomListRelatedContinent(map));
 
 		return service.guideRandomListRelatedContinent(map);
 

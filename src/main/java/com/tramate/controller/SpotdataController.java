@@ -63,8 +63,12 @@ public class SpotdataController {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
 		int spotTotalCount = service.SpotCountRelatedContinent(continent);
+		System.out.println("SpotTotalCount" + spotTotalCount);
+
 		System.out.println(continent + "의 총 Spot갯수 : " + spotTotalCount);
 		Random rd = new Random();
+		if (spotTotalCount == 0)
+			spotTotalCount = 1;
 		int startNum = rd.nextInt(spotTotalCount) + 1;
 		if (startNum >= spotTotalCount - 4 && spotTotalCount >= 4)
 			startNum = spotTotalCount - 4;
@@ -73,7 +77,7 @@ public class SpotdataController {
 		map.put("start", "" + startNum);
 		map.put("end", "" + (startNum + 4));
 
-		return service.spotRandomList(map);
+		return service.spotRandomListRealatedContinent(map);
 
 	}
 

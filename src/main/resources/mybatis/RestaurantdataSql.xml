@@ -31,8 +31,8 @@
      <!-- continent과 관련된 Restaurant의 총 수를 구하는 sql -->
      <select id="restaurantCountRelatedContinent" parameterType="String" resultType="int">
      	select count(*)
-     	from restaurantdata r
-     	where r.continent=#{continent}
+     	from restaurantdata r, guide g
+     	where g.continent=#{continent} and g.num=r.gnum
      </select>
      
       <!-- spot과 관련된 Restaurant 8개를 랜덤으로 고르는 sql -->
@@ -56,7 +56,7 @@
      	 <![CDATA[
      	 select *
      	 from (select rownum as rn, z.*
-     	 from (select a.*
+     	 from (select a.*,g.continent
      	 from restaurantdata a, guide g
      	 where g.continent=#{continent} and g.num=a.gnum) z
      	 where rownum<=#{end})
