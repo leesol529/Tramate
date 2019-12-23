@@ -50,4 +50,10 @@ public class TravelerService {
 		return dao.travelerLogin(map);
 	}
 
+	// 아이디에 해당하는 Traveler pk가져오는 메소드
+	public int getTravelerNumById(String id) {
+
+		return dao.getTravelerNumById(id);
+	}
+
 }

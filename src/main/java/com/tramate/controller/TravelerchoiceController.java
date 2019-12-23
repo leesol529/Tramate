@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +41,7 @@ public class TravelerchoiceController {
 	private SpotdataService sservice;
 
 	// 가이드와 관련된 activity를 json으로 보내는 메소드
-	@RequestMapping(value = "/traveler/choice/activity")
+	@RequestMapping(value = "/traveler/choice/activity",method = RequestMethod.GET)
 	public List<ActivitydataDto> activityRelatedGuide(@RequestParam int gnum) {
 
 		System.out.println(gnum + "이 출력되었음");
@@ -48,14 +49,14 @@ public class TravelerchoiceController {
 	}
 
 	// 가이드와 관련된 restaurant를 json으로 보내는 메소드
-	@RequestMapping(value = "/traveler/choice/restaurant")
+	@RequestMapping(value = "/traveler/choice/restaurant",method = RequestMethod.GET)
 	public List<RestaurantdataDto> restaurantRelatedGuide(@RequestParam int gnum) {
 
 		return rservice.restaurantRelatedGuide(gnum);
 	}
 
 	// 가이드와 관련된 apot을 json으로 보내는 메소드
-	@RequestMapping(value = "/traveler/choice/spot")
+	@RequestMapping(value = "/traveler/choice/spot",method = RequestMethod.GET)
 	public List<SpotdataDto> spotRelatedGuide(@RequestParam int gnum) {
 
 		return sservice.spotRelatedGuide(gnum);

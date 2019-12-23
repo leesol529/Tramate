@@ -50,5 +50,12 @@ public class TravelerController {
 		return service.getTraveler(num);
 	}
 	
+	//아이디로 Traveler pk값 가져오기
+	@RequestMapping(value="/traveler/getNumById", method=RequestMethod.POST)
+	public int getTravelrNumById(@RequestParam String id) {
+		
+		return service.getTravelerNumById(id);
+	}
+	
 	
 }

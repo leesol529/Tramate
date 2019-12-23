@@ -26,4 +26,9 @@
 		select count(*) from traveler where id=#{id} and pass=#{pass}
 	</select>
 	
+	<!-- 아이디에 해당하는 Traveler pk값 가져오는 sql -->
+	<select id="getTravelerNumById" parameterType="String" resultType="int">
+		select num from traveler where id=#{id}
+	</select>
+	
 </mapper>
