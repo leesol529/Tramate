@@ -46,17 +46,29 @@ public class SpotdataDao extends SqlSessionDaoSupport {
 
 		return getSqlSession().selectOne("spotCountRelatedSpot", spot);
 	}
-	
-	//Spot�� ���õ� �������� �������� �������� �޼ҵ�
-	public List<SpotdataDto> spotRandomList(Map<String, String> map){
-		
-		return getSqlSession().selectList("spotRandomList", map);
+
+	// Continent와 관련있는 Spot의 총 수를 구하는 메소드
+	public int SpotCountRelatedContinent(String continent) {
+
+		return getSqlSession().selectOne("spotCountRelatedContinent", continent);
 	}
 	
-	//가이드와 관련된 관광명소를 찾는 메소드
-	public List<SpotdataDto> spotRelatedGuide(int gnum){
+	// Continent와 관련있는 Spot 랜덤 5개를 구하는 메소드
+	public List<SpotdataDto> spotRandomListRealatedContinent(Map<String, String> map){
 		
-		return getSqlSession().selectList("spotRelatedGuide",gnum);
-				
+		return getSqlSession().selectList("spotRandomListRealatedContinent", map);
+	}
+
+	// Spot�� ���õ� �������� �������� �������� �޼ҵ�
+	public List<SpotdataDto> spotRandomList(Map<String, String> map) {
+
+		return getSqlSession().selectList("spotRandomList", map);
+	}
+
+	// 가이드와 관련된 관광명소를 찾는 메소드
+	public List<SpotdataDto> spotRelatedGuide(int gnum) {
+
+		return getSqlSession().selectList("spotRelatedGuide", gnum);
+
 	}
 }

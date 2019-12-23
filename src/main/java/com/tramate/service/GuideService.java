@@ -57,6 +57,12 @@ public class GuideService {
 		return dao.guideRandomList(map);
 	}
 
+	// Continent와 관랸 있는 Guide 5명을 랜덤으로 뽑는 메소드
+	public List<GuideDto> guideRandomListRelatedContinent(Map<String, String> map) {
+
+		return dao.guideRandomListRelatedContinent(map);
+	}
+
 	// 로그인 가능한 아이디가 있는지 확인하는 메소드
 	public int guideLogin(Map<String, String> map) {
 
@@ -72,5 +78,11 @@ public class GuideService {
 	public List<GuideDto> guideRelatedSpot(String spot) {
 
 		return dao.guideRelatedSpot(spot);
+	}
+
+	// Continent와 관련있는 Guide의 총 수를 구하는 메소드
+	public int guideCountRelatedContinent(String continent) {
+
+		return dao.guideCountRelatedContinent(continent);
 	}
 }

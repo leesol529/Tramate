@@ -57,6 +57,26 @@ public class RestaurantdataController {
 		return service.RestaurantRandomList(map);
 	}
 	
+	//Continent와 관련있는 Restaurant 5개를 랜덤으로 가져오기
+	@PostMapping("/restaurant/randomlist/continent")
+	public List<RestaurantdataDto> restaurantRandomListRelatedContinent(@RequestParam String continent){
+		
+		java.util.Map<String, String> map = new HashMap<String, String>();
+		int restaurantTotalCount = service.RestaurantCountRelatedContinent(continent);
+		
+		System.out.println(continent+"의 총 restaurant 갯수 : "+restaurantTotalCount);
+		Random rd = new Random();
+		int startNum = rd.nextInt(restaurantTotalCount)+1;
+		if(startNum >= restaurantTotalCount-4 && restaurantTotalCount >=4) startNum = restaurantTotalCount-4;
+		System.out.println("startNum :" +startNum);
+		map.put("continent", continent);
+		map.put("start", ""+startNum);
+		map.put("end", ""+(startNum+4));
+		
+		return service.restaurantRandomListRealatedContinent(map);
+		
+	}
+	
 	//restaurantform에 이미지 업로드 시 서버에 이미지 저장 
 	@RequestMapping(value = "/guide/choice/restaurant_img", method = RequestMethod.POST)
 	public @ResponseBody void insertTravelerImage(

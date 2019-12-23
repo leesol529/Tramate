@@ -63,4 +63,16 @@ public class SpotdataService {
 
 		return dao.spotRelatedGuide(gnum);
 	}
+
+	// Continent와 관련있는 Spot의 총 수를 구하는 메소드
+	public int SpotCountRelatedContinent(String continent) {
+
+		return dao.SpotCountRelatedContinent(continent);
+	}
+
+	// Continent와 관련있는 Spot 랜덤 5개를 구하는 메소드
+	public List<SpotdataDto> spotRandomListRealatedContinent(Map<String, String> map) {
+
+		return dao.spotRandomListRealatedContinent(map);
+	}
 }

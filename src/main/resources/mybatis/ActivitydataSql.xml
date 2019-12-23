@@ -32,6 +32,13 @@
      	where g.spot=#{spot} and g.num=a.gnum
      </select>
      
+      <!-- continent과 관련된 액티비티의 총 수를 구하는 sql -->
+     <select id="activityCountRelatedContinent" parameterType="String" resultType="int">
+     	select count(*)
+     	from activitydata a
+     	where a.continent=#{continent}
+     </select>
+     
      <!-- spot과 관련된 액티비티의 6개를 랜덤으로 고르는 sql -->
      <select id="activityRandomList" parameterType="HashMap" resultType="addto">
      	
@@ -41,6 +48,21 @@
      	 from (select a.*
      	 from activitydata a, guide g
      	 where g.spot=#{spot} and g.num=a.gnum) z
+     	 where rownum<=#{end})
+     	 where rn >=#{start}
+     	 ]]> 
+     	
+     </select>
+     
+     <!-- continent과 관련된 액티비티의 6개를 랜덤으로 고르는 sql -->
+     <select id="activityRandomListRelatedContinent" parameterType="HashMap" resultType="addto">
+     	
+     	 <![CDATA[
+     	 select *
+     	 from (select rownum as rn, z.*
+     	 from (select a.*
+     	 from activitydata a, guide g
+     	 where g.continent=#{continent} and g.num=a.gnum) z
      	 where rownum<=#{end})
      	 where rn >=#{start}
      	 ]]> 

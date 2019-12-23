@@ -43,6 +43,21 @@
      	
      </select>
      
+     <!-- continent와 관련된 가이드 6명를 랜덤으로 고르는 sql -->
+     <select id="guideRandomRelatedContinent" parameterType="HashMap" resultType="gdto">
+     	
+     	 <![CDATA[
+     	 select *
+     	 from (select rownum as rn, z.*
+     	 from (select g.*
+     	 from guide g
+     	 where g.continent=#{continent}) z
+     	 where rownum<=#{end})
+     	 where rn >=#{start}
+     	 ]]> 
+     	
+     </select>
+     
      <select id="selectOneGuide" parameterType="String" resultType="int">
    		select num from guide where id=#{id}
      </select>

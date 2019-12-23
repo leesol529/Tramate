@@ -61,4 +61,16 @@ public class RestaurantdataService {
 
 		return dao.restaurantRelatedGuide(gnum);
 	}
+
+	// Continent와 관련있는 Restaurant의 총 수를 구하는 메소드
+	public int RestaurantCountRelatedContinent(String continent) {
+
+		return dao.RestaurantCountRelatedContinent(continent);
+	}
+
+	// Continent와 관련있는 Restaurant 5개를 랜덤으로 가져오는 메소드
+	public List<RestaurantdataDto> restaurantRandomListRealatedContinent(java.util.Map<String, String> map) {
+
+		return dao.restaurantRandomListRealatedContinent(map);
+	}
 }

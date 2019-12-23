@@ -68,4 +68,16 @@ public class ActivitydataService {
 
 		return dao.activityRelatedGuid(gnum);
 	}
+
+	// Continent와 관련있는 Activity의 총 수를 구하는 메소드
+	public int ActivityCountRelatedContinent(String continent) {
+
+		return dao.ActivityCountRelatedContinent(continent);
+	}
+
+	// Continent와 관련있는 Activity 5개를 랜덤으로 구하는 메소드
+	public List<ActivitydataDto> activityRandomListRelatedContinent(java.util.Map<String, String> map) {
+		
+		return dao.activityRandomListRelatedContinent(map);
+	}
 }
