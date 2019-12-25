@@ -1,5 +1,7 @@
 package com.tramate.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -8,33 +10,39 @@ import com.tramate.dto.TravelerrateDto;
 @Repository
 public class TravelerrateDao extends SqlSessionDaoSupport {
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertTravelerRate(TravelerrateDto dto) {
 
 		getSqlSession().insert("insertTravelerRate", dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ ÀĞ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½Ğ´ï¿½ ï¿½Ş¼Òµï¿½
 	public TravelerrateDto getTravelerRate(int num) {
 
 		return getSqlSession().selectOne("selectTravelerRate", num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateTravelerRate(TravelerrateDto dto) {
 
 		getSqlSession().update("updateTravelerRate", dto);
 	}
 
-	// numÀ» ÅëÇØ¼­ ÇÏ³ªÀÇ TravelerRate¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteTravelerRate(int num) {
 
 		getSqlSession().delete("deleteTravelerRate", num);
 	}
 
-	// TravelerrateÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// Travelerrateï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("travelerrateTotalCount");
+	}
+	
+	//ì—¬í–‰ìë³„ ëŒ“ê¸€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public List<TravelerrateDto> replyToTraveler(int tnum){
+		
+		return getSqlSession().selectList("replyToTraveler",tnum);
 	}
 }

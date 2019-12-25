@@ -14,39 +14,45 @@ public class GuiderateService {
 	@Autowired
 	private GuiderateDao dao;
 
-	// numÀ» ÀÌ¿ëÇÏ¿© ÇÏ³ªÀÇ Guiderate¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public GuiderateDto getGuideRate(int num) {
 
 		return dao.getGuideRate(num);
 	}
 
-	// Dto¸¦ ÀÌ¿ëÇÏ¿© Guiderate¸¦ Ãß°¡ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ Guiderateï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertGuideRate(GuiderateDto dto) {
 
 		dao.insertGuideRate(dto);
 	}
 
-	// Dto¸¦ ÀÌ¿ëÇÏ¿© Guiderate¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateGuideRate(GuiderateDto dto) {
 
 		dao.updateGuideRate(dto);
 	}
 
-	// numÀ» ÀÌ¿ëÇÏ¿© GuideRate¸¦ Áö¿ì´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ GuideRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteGuideRate(int num) {
 
 		dao.deleteGuideRate(num);
 	}
 
-	// ¸ğµç Guiderate¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<GuiderateDto> getGuideRateList() {
 
 		return dao.getGuideRateList();
 	}
 
-	// ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
+	}
+
+	// ê°€ì´ë“œë³„ ëŒ“ê¸€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public List<GuiderateDto> replyToGuide(int gnum) {
+
+		return dao.replyToGuide(gnum);
 	}
 }

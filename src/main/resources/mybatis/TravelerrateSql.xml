@@ -6,7 +6,7 @@
      </select>
      
      <insert id="insertTravelerRate" parameterType="trdto">
-     	insert into traveler values(traveler_seq.nextval,#{name},#{nat},#{mobile},#{addr},#{content},#{img},#{id},#{pass},#{email})
+     	insert into travelerrate values(travelerrate_seq.nextval,#{gnum},#{tnum},#{rate},#{content})
      </insert>
      
      <select id="selectTravelerRate" parameterType="int" resultType="trdto">
@@ -20,4 +20,9 @@
      <delete id="deleteTravelerRate" parameterType="int">
      	delete from travelerrate where num=#{num}
      </delete>
+     
+     <!-- 여행자별 댓글 확인하는 sql -->
+     <select id="replyToTraveler" parameterType="int" resultType="trdto">
+     	select * from travelerrate where tnum=#{tnum} order by num desc
+     </select>
 </mapper>

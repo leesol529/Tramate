@@ -10,39 +10,45 @@ import com.tramate.dto.GuiderateDto;
 @Repository
 public class GuiderateDao extends SqlSessionDaoSupport {
 
-	// numÀ» ÀÌ¿ëÇÏ¿© ÇÏ³ªÀÇ Guiderate¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public GuiderateDto getGuideRate(int num) {
 
 		return getSqlSession().selectOne("selectGuideRate", num);
 	}
 
-	// Dto¸¦ ÀÌ¿ëÇÏ¿© Guiderate¸¦ Ãß°¡ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ Guiderateï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertGuideRate(GuiderateDto dto) {
 
 		getSqlSession().insert("insertGuideRate", dto);
 	}
 
-	// Dto¸¦ ÀÌ¿ëÇÏ¿© Guiderate¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateGuideRate(GuiderateDto dto) {
 
 		getSqlSession().update("updateGuideRate", dto);
 	}
 
-	// numÀ» ÀÌ¿ëÇÏ¿© GuideRate¸¦ Áö¿ì´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ GuideRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteGuideRate(int num) {
 
 		getSqlSession().delete("deleteGuideRate", num);
 	}
 
-	// ¸ğµç Guiderate¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ï¿½ Guiderateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public List<GuiderateDto> getGuideRateList() {
 
 		return getSqlSession().selectList("selectGuideRateList");
 	}
 
-	// ActivityDataÀÇ ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ActivityDataï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return getSqlSession().selectOne("guideRateTotalCount");
+	}
+	
+	//ê°€ì´ë“œë³„ ëŒ“ê¸€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public List<GuiderateDto> replyToGuide(int gnum){
+		
+		return getSqlSession().selectList("replyToGuide",gnum);
 	}
 }

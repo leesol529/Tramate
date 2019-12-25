@@ -30,4 +30,9 @@
      	select count(*) from guide where id=#{id} and pass=#{pass}
      </select>
      
+     <!-- 가이드별 댓글 확인하는 sql -->
+     <select id="replyToGuide" parameterType="int" resultType="grdto">
+     	select * from guiderate where gnum=#{gnum} order by num desc
+     </select>
+     
 </mapper>

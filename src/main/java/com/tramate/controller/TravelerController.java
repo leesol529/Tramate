@@ -45,7 +45,7 @@ public class TravelerController {
 	}
 	
 	//traveler 에서 해당 num 정보 가져오기
-	@RequestMapping(value = "/traveler/select", method = RequestMethod.GET)
+	@RequestMapping(value = "/traveler/select", method = RequestMethod.POST)
 	public TravelerDto selecttraveler(@RequestParam int num) {
 		return service.getTraveler(num);
 	}

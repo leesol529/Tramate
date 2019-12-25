@@ -98,7 +98,7 @@ public class GuideController {
 	}
 
 	// num값을 받아서 하나의 Guide의 정보를 얻는 메소드
-	@RequestMapping(value = "/guide/select", method = RequestMethod.GET)
+	@RequestMapping(value = "/guide/select", method = RequestMethod.POST)
 	public GuideDto selectguide(@RequestParam int num) {
 
 		return service.getGuide(num);

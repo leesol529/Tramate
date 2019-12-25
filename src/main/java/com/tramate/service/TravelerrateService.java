@@ -1,5 +1,7 @@
 package com.tramate.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,33 +14,39 @@ public class TravelerrateService {
 	@Autowired
 	private TravelerrateDao dao;
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ »ı¼ºÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void insertTravelerRate(TravelerrateDto dto) {
 
 		dao.insertTravelerRate(dto);
 	}
 
-	// numÀ» ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ ÀĞ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½Ğ´ï¿½ ï¿½Ş¼Òµï¿½
 	public TravelerrateDto getTravelerRate(int num) {
 
 		return dao.getTravelerRate(num);
 	}
 
-	// Dto¸¦ ÅëÇØ ÇÏ³ªÀÇ TravelerRate¸¦ ¾÷µ¥ÀÌÆ®ÇÏ´Â ¸Ş¼Òµå
+	// Dtoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void updateTravelerRate(TravelerrateDto dto) {
 
 		dao.updateTravelerRate(dto);
 	}
 
-	// numÀ» ÅëÇØ¼­ ÇÏ³ªÀÇ TravelerRate¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	// numï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ TravelerRateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 	public void deleteTravelerRate(int num) {
 
 		dao.deleteTravelerRate(num);
 	}
 
-	// ÃÑ °¹¼ö¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	public int getTotalCount() {
 
 		return dao.getTotalCount();
+	}
+
+	// ì—¬í–‰ìë³„ ëŒ“ê¸€ í™•ì¸í•˜ëŠ” ë©”ì†Œë“œ
+	public List<TravelerrateDto> replyToTraveler(int tnum) {
+
+		return dao.replyToTraveler(tnum);
 	}
 }
