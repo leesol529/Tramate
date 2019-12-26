@@ -12,6 +12,7 @@
            <typeAlias type="com.tramate.dto.TravelerrateDto" alias="trdto"/>
            <typeAlias type="com.tramate.dto.CalendarDto" alias="cdto"/>
            <typeAlias type="com.tramate.dto.ScheduleDto" alias="sdto"/>
+           <typeAlias type="com.tramate.dto.ChatDto" alias="chdto"/>
      </typeAliases>
      <mappers>
            <mapper resource="mybatis/GuideSql.xml"/>
@@ -24,5 +25,6 @@
            <mapper resource="mybatis/TravelerSql.xml"/>
            <mapper resource="mybatis/CalendarSql.xml"/>
            <mapper resource="mybatis/ScheduleSql.xml"/>
+           <mapper resource="mybatis/ChatSql.xml"/>
      </mappers>
 </configuration>
