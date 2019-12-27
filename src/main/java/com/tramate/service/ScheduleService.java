@@ -23,4 +23,5 @@ public class ScheduleService {
 	public void insertSchedule(ScheduleDto dto) {
 		dao.insertSchedule(dto);
 	}
+
 }

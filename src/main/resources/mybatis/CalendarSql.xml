@@ -4,8 +4,18 @@
      <select id="calendarGuideSchedule" parameterType="int" resultType="cdto">
      	select * from calendar where num=#{num}
      </select>
+     
      <insert id="calendarInsert" parameterType="cdto">
      	insert into calendar values(calendar_seq.nextval,#{gnum},#{tnum},#{startdate},#{enddate}, #{accept})
      </insert>
      
+     <!-- 수락한 스케줄만 가져오기  -->
+     <select id="calendarGetFixed" parameterType="int" resultType="sdto">
+    	select * from calendar where gnum=#{gnum} and accept='yes'
+     </select>
+    
+     <!-- 수락 대기중인 새로운 스케줄만 가져오기 -->
+     <select id="calendarGetNew" parameterType="int" resultType="sdto">
+    	select * from calendar where gnum=#{gnum} and accept='wait'
+     </select>
 </mapper>
