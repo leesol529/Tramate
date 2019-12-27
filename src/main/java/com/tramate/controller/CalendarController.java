@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,13 +20,15 @@ public class CalendarController {
 	@Autowired
 	CalendarService service;
 	
-	@RequestMapping(value="/guide/schedule", method=RequestMethod.GET)
+	@RequestMapping(value="/guide/getSchedule", method=RequestMethod.GET)
 	public List<CalendarDto> getSchedule(@RequestParam int num){
 		return service.getSchedule(num);
 	}
 	
-	@RequestMapping(value="/guide/insertSchedule", method=RequestMethod.POST)
-	public void insertSchedule(CalendarDto dto) {
+	
+	//calendar table에 insert
+	@RequestMapping(value="/calendar/insert", method=RequestMethod.POST)
+	public void insertSchedule(@RequestBody CalendarDto dto) {
 		service.insertSchedule(dto);
 	}
 }

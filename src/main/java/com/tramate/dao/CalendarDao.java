@@ -15,6 +15,6 @@ public class CalendarDao extends SqlSessionDaoSupport{
 	}
 	
 	public void insertSchedule(CalendarDto dto) {
-		getSqlSession().insert("calendarInsert");
+		getSqlSession().insert("calendarInsert", dto);
 	}
 }

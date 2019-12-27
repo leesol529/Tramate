@@ -6,6 +6,6 @@
      </select>
      
      <insert id="scheduleInsert" parameterType="sdto">
-     	insert into schedule values(schedule_seq.nextval,#{gnum},#{tnum},#{pks},#{type})
+     	insert into schedule values (schedule_seq.nextval,#{gnum},#{tnum},#{pks},#{type})
      </insert>
 </mapper>

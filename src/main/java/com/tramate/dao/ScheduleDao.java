@@ -18,7 +18,7 @@ public class ScheduleDao extends SqlSessionDaoSupport {
 	}
 	
 	public void insertSchedule(ScheduleDto dto) {
-		getSqlSession().insert("scheduleInsert");
+		getSqlSession().insert("scheduleInsert", dto);
 	}
 	
 }

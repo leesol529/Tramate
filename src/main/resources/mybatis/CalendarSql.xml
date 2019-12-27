@@ -5,7 +5,7 @@
      	select * from calendar where num=#{num}
      </select>
      <insert id="calendarInsert" parameterType="cdto">
-     	insert into calendar values(calendar_seq.nextval,#{gnum},#{tnum},#{startdate},#{enddate})
+     	insert into calendar values(calendar_seq.nextval,#{gnum},#{tnum},#{startdate},#{enddate}, #{accept})
      </insert>
      
 </mapper>

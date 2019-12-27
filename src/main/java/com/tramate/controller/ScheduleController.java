@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +16,7 @@ import com.tramate.dto.ScheduleDto;
 import com.tramate.service.ScheduleService;
 
 @RestController
+@CrossOrigin
 public class ScheduleController {
 
 	@Autowired
@@ -32,8 +35,11 @@ public class ScheduleController {
 	}
 	
 	//schedule 테이블에 정보 입력하기 
-	@RequestMapping(value="/traveler/choice")
-	public void insertSchedule(ScheduleDto dto) {
-		service.insertSchedule(dto);
+	@RequestMapping(value="/traveler/choice", method=RequestMethod.POST)
+	public void insertSchedule(@RequestBody List<ScheduleDto> list) {
+		//System.out.println(list);
+		for(ScheduleDto dto: list) {
+			service.insertSchedule(dto);
+		}
 	}
 }
