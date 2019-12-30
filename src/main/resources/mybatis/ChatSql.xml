@@ -6,6 +6,6 @@
 	 </insert>
 	 
 	 <select id="selectChatList" parameterType="HashMap" resultType="chdto">
-	 	select * from chat where gnum=#{gnum} and tnum=#{tnum} order by num desc
+	 	select * from chat where gnum=#{gnum} and tnum=#{tnum} order by num asc
 	 </select>
 </mapper>
