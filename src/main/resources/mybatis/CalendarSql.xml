@@ -9,13 +9,29 @@
      	insert into calendar values(calendar_seq.nextval,#{gnum},#{tnum},#{startdate},#{enddate}, #{accept})
      </insert>
      
+     <!-- 해당 가이드의 수락된 스케줄의 tnum 가져오기 -->
+     <select id="calendarFixedTnum" parameterType="int" resultType="int">
+     	select distinct c.tnum from calendar c, schedule s
+     	 where c.gnum=#{gnum} and accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
+     <!-- 해당 가이드의 수락 대기중인 스케줄의 tnum 가져오기 -->
+     <select id="calendarWaitTnum" parameterType="int" resultType="int">
+     	select distinct c.tnum from calendar c, schedule s
+     	 where c.gnum=#{gnum} and accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
      <!-- 수락한 스케줄만 가져오기  -->
-     <select id="calendarGetFixed" parameterType="int" resultType="sdto">
-    	select * from calendar where gnum=#{gnum} and accept='yes'
+     <select id="calendarGetFixed" parameterType="Map" resultType="gatdto">
+    	select c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
      </select>
     
      <!-- 수락 대기중인 새로운 스케줄만 가져오기 -->
-     <select id="calendarGetNew" parameterType="int" resultType="sdto">
-    	select * from calendar where gnum=#{gnum} and accept='wait'
+     <select id="calendarGetNew" parameterType="Map" resultType="gatdto">
+    	select c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
      </select>
 </mapper>

@@ -1,6 +1,9 @@
 package com.tramate.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tramate.dto.CalendarDto;
+import com.tramate.dto.GuideAndTravelerDto;
 import com.tramate.dto.ScheduleDto;
 import com.tramate.service.CalendarService;
 
@@ -35,14 +39,41 @@ public class CalendarController {
 	
 	//수락한 스케줄 가져오기 
 	@RequestMapping(value="/guide/schedule/fixed", method=RequestMethod.POST)
-	public List<ScheduleDto> getFixedSchedule(@RequestParam int gnum) {
-		return service.getFixedSchedule(gnum);
+	public List<List<GuideAndTravelerDto>> getFixedSchedule(
+			@RequestParam int gnum) {
+		List<List<GuideAndTravelerDto>> list = null;
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("gnum", gnum);
+		
+		//연결된 tnum 전체 구하기 
+		List<Integer> tnums = service.getFixedTnum(gnum);
+		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		for(int tnum: tnums) {
+			map.put("tnum", tnum);
+			myList = service.getFixedSchedule(map);
+			list.add(myList);
+		}
+		return list;
 	}
 	
 	//수락 대기중인 스케줄 가져오기 
 	@RequestMapping(value="/guide/schedule/new", method=RequestMethod.POST)
-	public List<ScheduleDto> getNewSchedule(@RequestParam int gnum) {
-		return service.getNewSchedule(gnum);
+	public List<List<GuideAndTravelerDto>> getNewSchedule(
+			@RequestParam int gnum) {
+		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("gnum", gnum);
+		
+		//연결된 tnum 전체 구하기 
+		List<Integer> tnums = service.getWaitTnum(gnum);
+		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		for(int tnum: tnums) {
+			//map.remove("tnum");
+			map.put("tnum", tnum);
+			myList = service.getNewSchedule(map);
+			list.add(myList);
+		}
+		return list;
 	}
 }
 
