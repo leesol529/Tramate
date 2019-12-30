@@ -35,4 +35,9 @@
      	select * from guiderate where gnum=#{gnum} order by num desc
      </select>
      
+     <!-- guide 별 댓글 갯수 -->
+     <select id="replyCounttoGuide" parameterType="int" resultType="int">
+     	select count(*) from guiderate where gnum=#{gnum}
+     </select>
+     
 </mapper>

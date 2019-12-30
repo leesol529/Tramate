@@ -20,7 +20,7 @@ public class GuiderateController {
 	@Autowired
 	private GuiderateService service;
 	
-	//가이드에 대한 평가를 입력하는 메소드
+	//媛��씠�뱶�뿉 ���븳 �룊媛�瑜� �엯�젰�븯�뒗 硫붿냼�뱶
 	@RequestMapping(value="/guide/rate", method=RequestMethod.POST)
 	public void insertGuideRate(@RequestBody GuiderateDto dto) {
 		
@@ -33,4 +33,8 @@ public class GuiderateController {
 		return service.replyToGuide(gnum);
 	}
 	
+	@RequestMapping(value = "/guiderate/select", method=RequestMethod.POST)
+	public int replyCounttoGuide(@RequestParam int gnum) {
+		return service.replyCounttoGuide(gnum);
+	}
 }

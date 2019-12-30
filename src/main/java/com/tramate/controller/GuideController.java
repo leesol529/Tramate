@@ -41,7 +41,7 @@ public class GuideController {
 		return service.getTotalCount();
 	}
 
-	// Spot�� ���õ� guide�� �� ���� ���ϴ� �޼ҵ�
+	// Spot占쏙옙 占쏙옙占시듸옙 guide占쏙옙 占쏙옙 占쏙옙占쏙옙 占쏙옙占싹댐옙 占쌨소듸옙
 	@GetMapping("/guideTotalCountRelatedSpot")
 	public int guideTotalCountRelatedSpot(String spot) {
 
@@ -49,13 +49,13 @@ public class GuideController {
 
 	}
 
-	// spot과 관련된 guide를 5명 랜덤으로 뽑는 메소드 ex) 다낭과 관련된 guide 랜덤 5명
+	// spot怨� 愿��젴�맂 guide瑜� 5紐� �옖�뜡�쑝濡� 戮묐뒗 硫붿냼�뱶 ex) �떎�궘怨� 愿��젴�맂 guide �옖�뜡 5紐�
 	@PostMapping("/guideRandomRelatedSpot")
 	public List<GuideDto> guideRandomList(@RequestParam String spot) {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
 		int guideTotalCount = service.getTotalCountRelatedSpot(spot);
-		System.out.println(spot + "의 총 가이드 수 : " + guideTotalCount);
+		System.out.println(spot + "�쓽 珥� 媛��씠�뱶 �닔 : " + guideTotalCount);
 		Random rd = new Random();
 		int startNum = rd.nextInt(guideTotalCount) + 1;
 		if (startNum >= guideTotalCount - 4 && guideTotalCount >= 4)
@@ -68,13 +68,13 @@ public class GuideController {
 		return service.guideRandomList(map);
 	}
 
-	// Continent와 관랸 있는 Guide 5명을 랜덤으로 뽑는 메소드
+	// Continent�� 愿��왆 �엳�뒗 Guide 5紐낆쓣 �옖�뜡�쑝濡� 戮묐뒗 硫붿냼�뱶
 	@PostMapping("/guide/randomlist/continent")
 	public List<GuideDto> guideRandomListRelatedContinent(@RequestParam String continent) {
 
 		java.util.Map<String, String> map = new HashMap<String, String>();
 		int guideTotalCount = service.guideCountRelatedContinent(continent);
-		System.out.println(continent + "의 총 가이드 수 : " + guideTotalCount);
+		System.out.println(continent + "�쓽 珥� 媛��씠�뱶 �닔 : " + guideTotalCount);
 		Random rd = new Random();
 		int startNum = rd.nextInt(guideTotalCount) + 1;
 		if (startNum >= guideTotalCount - 4 && guideTotalCount >= 4)
@@ -89,7 +89,7 @@ public class GuideController {
 
 	}
 
-	// React로 부터 json을 받아서 guide를 등록한다.
+	// React濡� 遺��꽣 json�쓣 諛쏆븘�꽌 guide瑜� �벑濡앺븳�떎.
 
 	@RequestMapping(value = "/guide/join", method = RequestMethod.POST)
 	public void insertGuideData(@RequestBody GuideDto dto) {
@@ -97,24 +97,24 @@ public class GuideController {
 		service.insertGuide(dto);
 	}
 
-	// num값을 받아서 하나의 Guide의 정보를 얻는 메소드
+	// num媛믪쓣 諛쏆븘�꽌 �븯�굹�쓽 Guide�쓽 �젙蹂대�� �뼸�뒗 硫붿냼�뱶
 	@RequestMapping(value = "/guide/select", method = RequestMethod.POST)
 	public GuideDto selectguide(@RequestParam int num) {
 
 		return service.getGuide(num);
 	}
 
-	// 이미지를 save 폴더에 저장해주는 메소드
+	// �씠誘몄�瑜� save �뤃�뜑�뿉 ���옣�빐二쇰뒗 硫붿냼�뱶
 	@RequestMapping(value = "/guide/imageupload", method = RequestMethod.POST)
 	public void insertGuideImage(@RequestParam MultipartFile uploadFile, HttpServletRequest request) {
 		SpringFileWriter fileWriter = new SpringFileWriter();
-		// 저장할 path 구하기
+		// ���옣�븷 path 援ы븯湲�
 		String path = request.getSession().getServletContext().getRealPath("/save");
 		System.out.println("path:" + path);
-		fileWriter.writeFile(uploadFile, path);// save 폴더에 저장해주는메서드
+		fileWriter.writeFile(uploadFile, path);// save �뤃�뜑�뿉 ���옣�빐二쇰뒗硫붿꽌�뱶
 	}
 
-	// 아이디와 비밀번호가 맞는 유저가 존재하는지 찾아내는 메소드
+	// �븘�씠�뵒�� 鍮꾨�踰덊샇媛� 留욌뒗 �쑀��媛� 議댁옱�븯�뒗吏� 李얠븘�궡�뒗 硫붿냼�뱶
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public int guideLogin(@RequestParam String id, @RequestParam String pass) {
 
@@ -122,11 +122,11 @@ public class GuideController {
 		map.put("id", id);
 		map.put("pass", pass);
 
-		// 아이디에 맞는 가이드가 존재하는가?
+		// �븘�씠�뵒�뿉 留욌뒗 媛��씠�뱶媛� 議댁옱�븯�뒗媛�?
 		int guideok = service.guideLogin(map);
 		int travelerok = tservice.travelerLogin(map);
 
-		// guide 테이블에서 정보 일치 시 1, traveler 테이블에서 정보 일치 시 2, 일치 정보 없을 때 0 반환
+		// guide �뀒�씠釉붿뿉�꽌 �젙蹂� �씪移� �떆 1, traveler �뀒�씠釉붿뿉�꽌 �젙蹂� �씪移� �떆 2, �씪移� �젙蹂� �뾾�쓣 �븣 0 諛섑솚
 		if (guideok == 1)
 			return 1;
 		else if (travelerok == 1)
@@ -136,13 +136,13 @@ public class GuideController {
 
 	}
 
-	// id에 해당하는 gnum 가져오기
+	// id�뿉 �빐�떦�븯�뒗 gnum 媛��졇�삤湲�
 	@RequestMapping(value = "/guide/choice/gnum", method = RequestMethod.POST)
 	public int selectOneGuide(@RequestParam String id) {
 		return service.selectOneGuide(id);
 	}
 
-	// spot에 해당하는 가이드들의 pk값을 넘겨주는 메소드
+	// spot�뿉 �빐�떦�븯�뒗 媛��씠�뱶�뱾�쓽 pk媛믪쓣 �꽆寃⑥＜�뒗 硫붿냼�뱶
 	@RequestMapping(value = "/guide/related/spot", method = RequestMethod.POST)
 	public List<GuideDto> guideRelatedSpot(@RequestParam String spot) {
 
