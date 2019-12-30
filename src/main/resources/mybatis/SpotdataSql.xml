@@ -69,4 +69,10 @@
      <select id="spotRelatedGuide" parameterType="int" resultType="sddto">
      	select * from spotdata where gnum=#{gnum}
      </select>
+     
+     <!-- 관광지를 중복없이 List로 뽑는 sql -->
+     <select id="spotDistinct" resultType="String">
+     	select distinct spot
+     	from guide
+     </select>
 </mapper>

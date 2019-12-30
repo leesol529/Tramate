@@ -75,4 +75,10 @@ public class SpotdataService {
 
 		return dao.spotRandomListRealatedContinent(map);
 	}
+
+	// 관광명소를 중복없이 String으로 던지는 메소드
+	public List<String> spotDistinct() {
+
+		return dao.spotDistinct();
+	}
 }

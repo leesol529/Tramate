@@ -99,5 +99,11 @@ public class SpotdataController {
 			service.insertSpotData(dto);
 		}
 	}
+	
+	@RequestMapping(value="/spot/distinct")
+	public List<String> spotDistinct(){
+		
+		return service.spotDistinct();
+	}
 
 }
