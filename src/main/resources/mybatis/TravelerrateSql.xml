@@ -25,4 +25,9 @@
      <select id="replyToTraveler" parameterType="int" resultType="trdto">
      	select * from travelerrate where tnum=#{tnum} order by num desc
      </select>
+     
+     <!-- Traveler 별 댓글 갯수 -->
+	 <select id="replyCounttoTraveler" parameterType="int" resultType="int">
+	 	select count(*) from travelerrate where tnum=#{tnum}
+	 </select>
 </mapper>

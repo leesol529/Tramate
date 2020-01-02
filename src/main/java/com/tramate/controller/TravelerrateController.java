@@ -21,7 +21,7 @@ public class TravelerrateController {
 	@Autowired
 	private TravelerrateService service;
 
-	// 여행자별 댓글 확인하는 메소드
+	// �뿬�뻾�옄蹂� �뙎湲� �솗�씤�븯�뒗 硫붿냼�뱶
 
 	@RequestMapping(value = "reply/to/traveler", method = RequestMethod.POST)
 	public List<TravelerrateDto> replyToTraveler(@RequestParam int tnum) {
@@ -29,11 +29,16 @@ public class TravelerrateController {
 		return service.replyToTraveler(tnum);
 	}
 
-	// 여행자에 대한 평가를 입력하는 메소드
+	// �뿬�뻾�옄�뿉 ���븳 �룊媛�瑜� �엯�젰�븯�뒗 硫붿냼�뱶
 	@RequestMapping(value = "/traveler/rate", method = RequestMethod.POST)
 	public void insertTravelerRate(@RequestBody TravelerrateDto dto) {
 
 		service.insertTravelerRate(dto);
+	}
+	
+	@RequestMapping(value="/travelerrate/select", method = RequestMethod.POST)
+	public int replyCounttoTraveler(@RequestParam int tnum) {
+		return service.replyCounttoTraveler(tnum);
 	}
 
 }
