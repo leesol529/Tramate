@@ -54,6 +54,10 @@
     	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
      </select>
      
+     <update id="calendarReasonUpdate" parameterType="Map">
+        update calendar set reason = #{reason} where gnum=#{gnum} and tnum=#{tnum}
+     </update>
+     
 </mapper>
 
 

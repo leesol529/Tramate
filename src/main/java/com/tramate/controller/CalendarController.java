@@ -23,84 +23,86 @@ public class CalendarController {
 
 	@Autowired
 	CalendarService service;
-	
-	@RequestMapping(value="/guide/getSchedule", method=RequestMethod.GET)
-	public List<CalendarDto> getSchedule(@RequestParam int num){
+
+	@RequestMapping(value = "/guide/getSchedule", method = RequestMethod.GET)
+	public List<CalendarDto> getSchedule(@RequestParam int num) {
 		return service.getSchedule(num);
 	}
-	
-	
-	//calendar table�뿉 insert
-	@RequestMapping(value="/calendar/insert", method=RequestMethod.POST)
+
+	// calendar table�뿉 insert
+	@RequestMapping(value = "/calendar/insert", method = RequestMethod.POST)
 	public void insertSchedule(@RequestBody CalendarDto dto) {
 		service.insertSchedule(dto);
 	}
-	
-	//�닔�씫�븳 �뒪耳�以� 媛��졇�삤湲� 
-	@RequestMapping(value="/guide/schedule/fixed", method=RequestMethod.POST)
-	public List<List<GuideAndTravelerDto>> getFixedSchedule(
-			@RequestParam int gnum) {
+
+	// �닔�씫�븳 �뒪耳�以� 媛��졇�삤湲�
+	@RequestMapping(value = "/guide/schedule/fixed", method = RequestMethod.POST)
+	public List<List<GuideAndTravelerDto>> getFixedSchedule(@RequestParam int gnum) {
 		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
-		
-		//�뿰寃곕맂 tnum �쟾泥� 援ы븯湲� 
+
+		// �뿰寃곕맂 tnum �쟾泥� 援ы븯湲�
 		List<Integer> tnums = service.getFixedTnum(gnum);
 		List<GuideAndTravelerDto> myList = new ArrayList<GuideAndTravelerDto>();
-		for(int tnum: tnums) {
+		for (int tnum : tnums) {
 			map.put("tnum", tnum);
 			myList = service.getFixedSchedule(map);
 			list.add(myList);
 		}
 		return list;
 	}
-	
-	//�닔�씫 ��湲곗쨷�씤 �뒪耳�以� 媛��졇�삤湲� 
-	@RequestMapping(value="/guide/schedule/new", method=RequestMethod.POST)
-	public List<List<GuideAndTravelerDto>> getNewSchedule(
-			@RequestParam int gnum) {
+
+	// �닔�씫 ��湲곗쨷�씤 �뒪耳�以� 媛��졇�삤湲�
+	@RequestMapping(value = "/guide/schedule/new", method = RequestMethod.POST)
+	public List<List<GuideAndTravelerDto>> getNewSchedule(@RequestParam int gnum) {
 		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
-		
-		//�뿰寃곕맂 tnum �쟾泥� 援ы븯湲� 
+
+		// �뿰寃곕맂 tnum �쟾泥� 援ы븯湲�
 		List<Integer> tnums = service.getWaitTnum(gnum);
 		List<GuideAndTravelerDto> myList = new ArrayList<>();
-		for(int tnum: tnums) {
+		for (int tnum : tnums) {
 			map.put("tnum", tnum);
 			myList = service.getNewSchedule(map);
 			list.add(myList);
 		}
 		return list;
 	}
-	
-	//�씪�젙 �닔�씫
-	@RequestMapping(value="/guide/accept", method=RequestMethod.POST)
+
+	// �씪�젙 �닔�씫
+	@RequestMapping(value = "/guide/accept", method = RequestMethod.POST)
 	public void acceptSchedule(@RequestParam int num) {
 		service.acceptSchedule(num);
 	}
-	
-	//�씪�젙 嫄곗젅
-	@RequestMapping(value="/guide/decline", method=RequestMethod.POST)
+
+	// �씪�젙 嫄곗젅
+	@RequestMapping(value = "/guide/decline", method = RequestMethod.POST)
 	public void declineSchedule(@RequestParam int num) {
 		service.declineSchedule(num);
 	}
-	
-	//�듅�젙 媛��씠�뱶�� �듅�젙 �뿬�뻾�옄�쓽 �뿬�뻾 �젙蹂� 媛��졇�삤湲� 
-	@RequestMapping(value="/guide/schedule/detail", method=RequestMethod.POST)
-	public List<GuideAndTravelerDto> getSpecificSchedule(
-			@RequestParam int gnum,
-			@RequestParam int tnum) {
+
+	// �듅�젙 媛��씠�뱶�� �듅�젙 �뿬�뻾�옄�쓽 �뿬�뻾 �젙蹂� 媛��졇�삤湲�
+	@RequestMapping(value = "/guide/schedule/detail", method = RequestMethod.POST)
+	public List<GuideAndTravelerDto> getSpecificSchedule(@RequestParam int gnum, @RequestParam int tnum) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
 		map.put("tnum", tnum);
 		return service.getSpecificSchedule(map);
 	}
-	
+
+	// 거절한 이유 업데이트
+	@RequestMapping(value = "/calendar/reason/update", method = RequestMethod.POST)
+	public void calendarReasonUpdate(@RequestParam String gnum, @RequestParam String tnum,
+			@RequestParam String reason) {
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("gnum", gnum);
+		map.put("tnum", tnum);
+		map.put("reason", reason);
+
+		service.calendarReasonUpdate(map);
+	}
+
 }
-
-
-
-
-
-
