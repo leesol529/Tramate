@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tramate.dto.ActivitydataDto;
 import com.tramate.dto.RestaurantdataDto;
 import com.tramate.service.RestaurantdataService;
 import com.tramate.upload.SpringFileWriter;
@@ -96,4 +95,19 @@ public class RestaurantdataController {
 			service.insertRestaurantData(dto);
 		}
 	}
+	
+	//해당 num의 data 반환
+	@RequestMapping(value="/restaurant/data", method=RequestMethod.POST)
+	public RestaurantdataDto getActivityData(@RequestParam int num){
+		return service.getRestaurantData(num);
+	}
 }
+
+
+
+
+
+
+
+
+

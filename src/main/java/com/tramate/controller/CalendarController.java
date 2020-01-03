@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tramate.dto.CalendarDto;
 import com.tramate.dto.GuideAndTravelerDto;
-import com.tramate.dto.ScheduleDto;
 import com.tramate.service.CalendarService;
 
 @RestController
@@ -41,7 +40,7 @@ public class CalendarController {
 	@RequestMapping(value="/guide/schedule/fixed", method=RequestMethod.POST)
 	public List<List<GuideAndTravelerDto>> getFixedSchedule(
 			@RequestParam int gnum) {
-		List<List<GuideAndTravelerDto>> list = null;
+		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
 		
@@ -68,13 +67,36 @@ public class CalendarController {
 		List<Integer> tnums = service.getWaitTnum(gnum);
 		List<GuideAndTravelerDto> myList = new ArrayList<>();
 		for(int tnum: tnums) {
-			//map.remove("tnum");
 			map.put("tnum", tnum);
 			myList = service.getNewSchedule(map);
 			list.add(myList);
 		}
 		return list;
 	}
+	
+	//일정 수락
+	@RequestMapping(value="/guide/accept", method=RequestMethod.POST)
+	public void acceptSchedule(@RequestParam int num) {
+		service.acceptSchedule(num);
+	}
+	
+	//일정 거절
+	@RequestMapping(value="/guide/decline", method=RequestMethod.POST)
+	public void declineSchedule(@RequestParam int num) {
+		service.declineSchedule(num);
+	}
+	
+	//특정 가이드와 특정 여행자의 여행 정보 가져오기 
+	@RequestMapping(value="/guide/schedule/detail", method=RequestMethod.POST)
+	public List<GuideAndTravelerDto> getSpecificSchedule(
+			@RequestParam int gnum,
+			@RequestParam int tnum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("gnum", gnum);
+		map.put("tnum", tnum);
+		return service.getSpecificSchedule(map);
+	}
+	
 }
 
 

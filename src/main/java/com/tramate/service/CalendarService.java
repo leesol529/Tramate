@@ -43,4 +43,32 @@ public class CalendarService {
 	public List<GuideAndTravelerDto> getNewSchedule(Map<String, Integer> map) {
 		return dao.getNewSchedule(map);
 	}
+	
+	//일정 수락
+	public void acceptSchedule(int num) {
+		dao.acceptSchedule(num);
+	}
+	
+	//일정 거절
+	public void declineSchedule(int num) {
+		dao.declineSchedule(num);
+	}
+	
+	//특정 가이드와 특정 여행자의 여행 정보 가져오기 
+	public List<GuideAndTravelerDto> getSpecificSchedule(Map<String, Integer> map) {
+		return dao.getSpecificSchedule(map);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

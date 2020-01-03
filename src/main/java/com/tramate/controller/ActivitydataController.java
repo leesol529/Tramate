@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sun.javafx.collections.MappingChange.Map;
 import com.tramate.dto.ActivitydataDto;
-import com.tramate.dto.GuideDto;
-import com.tramate.dto.SpotdataDto;
 import com.tramate.service.ActivitydataService;
 import com.tramate.upload.SpringFileWriter;
 
@@ -99,5 +96,11 @@ public class ActivitydataController {
 			System.out.println(dto);
 			service.insertActivityData(dto);
 		}
+	}
+	
+	//해당 num의 data 반환
+	@RequestMapping(value="/activity/data", method=RequestMethod.POST)
+	public ActivitydataDto getActivityData(@RequestParam int num){
+		return service.gettActivityData(num);
 	}
 }

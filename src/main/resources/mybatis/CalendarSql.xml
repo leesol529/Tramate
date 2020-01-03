@@ -23,15 +23,47 @@
      
      <!-- 수락한 스케줄만 가져오기  -->
      <select id="calendarGetFixed" parameterType="Map" resultType="gatdto">
-    	select c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
     	 from calendar c, schedule s
     	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
+    	 order by c.startdate desc
      </select>
     
      <!-- 수락 대기중인 새로운 스케줄만 가져오기 -->
      <select id="calendarGetNew" parameterType="Map" resultType="gatdto">
-    	select c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
     	 from calendar c, schedule s
     	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
+    	 order by c.num desc
      </select>
+     
+     <!-- 가이드가 일정 수락 시 -->
+     <update id="calendarAccept" parameterType="int">
+     	update calendar set accept='yes' where num=#{num}
+     </update>
+     
+     <!-- 가이드가 일정 거절 시 -->
+     <update id="calendarDecline" parameterType="int">
+     	update calendar set accept='no' where num=#{num}
+     </update>
+     
+     <!-- 특정 가이드와 특정 여행자의 정보만 가져오기 -->
+     <select id="calendarSpecificSchedule" parameterType="Map" resultType="gatdto">
+     	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+

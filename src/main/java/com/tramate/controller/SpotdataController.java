@@ -105,5 +105,11 @@ public class SpotdataController {
 		
 		return service.spotDistinct();
 	}
+	
+	//해당 num의 data 반환
+ 	@RequestMapping(value="/spot/data", method=RequestMethod.POST)
+	public SpotdataDto getSpotData(@RequestParam int num){
+		return service.getSpotData(num);
+	}
 
 }

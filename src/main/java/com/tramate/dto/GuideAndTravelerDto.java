@@ -1,6 +1,7 @@
 package com.tramate.dto;
 
 public class GuideAndTravelerDto {
+	private int num;
 	private int gnum;
 	private int tnum;
 	private String startdate;
@@ -9,6 +10,13 @@ public class GuideAndTravelerDto {
 	private int pks;
 	private int type;
 	
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public int getGnum() {
 		return gnum;
 	}

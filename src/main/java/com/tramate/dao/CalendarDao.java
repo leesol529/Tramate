@@ -40,4 +40,19 @@ public class CalendarDao extends SqlSessionDaoSupport{
 	public List<GuideAndTravelerDto> getNewSchedule(Map<String, Integer> map) {
 		return getSqlSession().selectList("calendarGetNew", map);
 	}
+	
+	//일정 수락
+	public void acceptSchedule(int num) {
+		getSqlSession().update("calendarAccept", num);
+	}
+	
+	//일정 거절
+	public void declineSchedule(int num) {
+		getSqlSession().update("calendarDecline", num);
+	}
+	
+	//특정 가이드와 특정 여행자의 여행 정보 가져오기 
+	public List<GuideAndTravelerDto> getSpecificSchedule(Map<String, Integer> map) {
+		return getSqlSession().selectList("calendarSpecificSchedule", map);
+	}
 }
