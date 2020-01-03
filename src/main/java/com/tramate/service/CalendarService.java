@@ -64,4 +64,34 @@ public class CalendarService {
 
 		dao.calendarReasonUpdate(map);
 	}
+	
+	//수락한 gnum 가져오기
+	public List<Integer> getFixedGnum(int tnum){
+		return dao.getFixedGnum(tnum);
+	}
+	
+	//대기중인 gnum 가져오기 
+	public List<Integer> getWaitGnum(int tnum){
+		return dao.getWaitGnum(tnum);
+	}
+	
+	//거절한 gnum 가져오기 
+	public List<Integer> getNoGnum(int tnum){
+		return dao.getNoGnum(tnum);
+	}
+	
+	//가이드가 수락한 스케줄 가져오기 for traveler
+	public List<GuideAndTravelerDto> getFixedScheduleForT(Map<String, Integer> map) {
+		return dao.getFixedScheduleForT(map);
+	}
+	
+	//가이드의 수락을 기다리는 스케줄 가져오기 for traveler
+	public List<GuideAndTravelerDto> getWaitScheduleForT(Map<String, Integer> map) {
+		return dao.getWaitScheduleForT(map);
+	}
+	
+	//가이드가 거절한 스케줄 가져오기 for traveler
+	public List<GuideAndTravelerDto> getNoScheduleForT(Map<String, Integer> map) {
+		return dao.getNoScheduleForT(map);
+	}
 }

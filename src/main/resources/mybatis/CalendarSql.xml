@@ -58,6 +58,48 @@
         update calendar set reason = #{reason} where gnum=#{gnum} and tnum=#{tnum}
      </update>
      
+     <!-- 여행자의 수락된 스케줄의 gnum 가져오기 -->
+     <select id="calendarFixedGnum" parameterType="int" resultType="int">
+     	select distinct c.gnum from calendar c, schedule s
+     	 where c.tnum=#{tnum} and accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
+     <!-- 여행자의 수락 대기중인 스케줄의 gnum 가져오기 -->
+     <select id="calendarWaitGnum" parameterType="int" resultType="int">
+     	select distinct c.gnum from calendar c, schedule s
+     	 where c.tnum=#{tnum} and accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
+     <!-- 여행자의 거절된 스케줄의 gnum 가져오기 -->
+     <select id="calendarNoGnum" parameterType="int" resultType="int">
+     	select distinct c.gnum from calendar c, schedule s
+     	 where c.tnum=#{tnum} and accept='no' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
+     <!-- 가이드가 수락한 스케줄만 가져오기 -->
+     <select id="calendarGetFixedForTraveler" parameterType="Map" resultType="gatdto">
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
+    	 order by c.startdate desc
+     </select>
+     
+     <!-- 가이드의 수락을 기다리고 있는 스케줄만 가져오기 -->
+     <select id="calendarGetWaitForTraveler" parameterType="Map" resultType="gatdto">
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
+    	 order by c.startdate desc
+     </select>
+     
+     <!-- 가이드가 거절한 스케줄만 가져오기 -->
+     <select id="calendarGetNoForTraveler" parameterType="Map" resultType="gatdto">
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='no' and c.gnum=s.gnum and c.tnum=s.tnum
+    	 order by c.startdate desc
+     </select>
+     
 </mapper>
 
 

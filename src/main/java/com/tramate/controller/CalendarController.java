@@ -104,5 +104,62 @@ public class CalendarController {
 
 		service.calendarReasonUpdate(map);
 	}
+	
+	//가이드가 수락한 스케줄 가져오기 for traveler
+	@RequestMapping(value="/traveler/schedule/fixed", method=RequestMethod.POST)
+	public List<List<GuideAndTravelerDto>> getFixedScheduleForT(
+			@RequestParam int tnum) {
+		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("tnum", tnum);
+		
+		//연결된 tnum 전체 구하기 
+		List<Integer> gnums = service.getFixedGnum(tnum);
+		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		for(int gnum: gnums) {
+			map.put("gnum", gnum);
+			myList = service.getFixedScheduleForT(map);
+			list.add(myList);
+		}
+		return list;
+	}
+	
+	//가이드의 수락을 기다리는 스케줄 가져오기 for traveler
+	@RequestMapping(value="/traveler/schedule/new", method=RequestMethod.POST)
+	public List<List<GuideAndTravelerDto>> getNewScheduleForT(
+			@RequestParam int tnum) {
+		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("tnum", tnum);
+		
+		//연결된 tnum 전체 구하기 
+		List<Integer> gnums = service.getWaitGnum(tnum);
+		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		for(int gnum: gnums) {
+			map.put("gnum", gnum);
+			myList = service.getWaitScheduleForT(map);
+			list.add(myList);
+		}
+		return list;
+	}
+	
+	//가이드가 거절한 스케줄 가져오기 for traveler
+	@RequestMapping(value="/traveler/schedule/no", method=RequestMethod.POST)
+	public List<List<GuideAndTravelerDto>> getNoScheduleForT(
+			@RequestParam int tnum) {
+		List<List<GuideAndTravelerDto>> list = new ArrayList<List<GuideAndTravelerDto>>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("tnum", tnum);
+		
+		//연결된 tnum 전체 구하기 
+		List<Integer> gnums = service.getNoGnum(tnum);
+		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		for(int gnum: gnums) {
+			map.put("gnum", gnum);
+			myList = service.getNoScheduleForT(map);
+			list.add(myList);
+		}
+		return list;
+	}
 
 }

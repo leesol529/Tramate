@@ -61,4 +61,33 @@ public class CalendarDao extends SqlSessionDaoSupport {
 
 		getSqlSession().update("calendarReasonUpdate", map);
 	}
+	
+	//수락한 gnum 가져오기
+	public List<Integer> getFixedGnum(int tnum){
+		return getSqlSession().selectList("calendarFixedGnum", tnum);
+	}
+	
+	//대기중인 gnum 가져오기 
+	public List<Integer> getWaitGnum(int tnum){
+		return getSqlSession().selectList("calendarWaitGnum", tnum);
+	}
+	
+	//거절한 gnum 가져오기 
+	public List<Integer> getNoGnum(int tnum){
+		return getSqlSession().selectList("calendarNoGnum", tnum);
+	}
+	//가이드가 수락한 스케줄 가져오기 for traveler
+		public List<GuideAndTravelerDto> getFixedScheduleForT(Map<String, Integer> map) {
+			return getSqlSession().selectList("calendarGetFixedForTraveler", map);
+		}
+		
+		//가이드의 수락을 기다리는 스케줄 가져오기 for traveler
+		public List<GuideAndTravelerDto> getWaitScheduleForT(Map<String, Integer> map) {
+			return getSqlSession().selectList("calendarGetWaitForTraveler", map);
+		}
+		
+		//가이드가 거절한 스케줄 가져오기 for traveler
+		public List<GuideAndTravelerDto> getNoScheduleForT(Map<String, Integer> map) {
+			return getSqlSession().selectList("calendarGetNoForTraveler", map);
+		}
 }
