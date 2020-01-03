@@ -30,13 +30,13 @@ public class CalendarController {
 	}
 	
 	
-	//calendar table에 insert
+	//calendar table�뿉 insert
 	@RequestMapping(value="/calendar/insert", method=RequestMethod.POST)
 	public void insertSchedule(@RequestBody CalendarDto dto) {
 		service.insertSchedule(dto);
 	}
 	
-	//수락한 스케줄 가져오기 
+	//�닔�씫�븳 �뒪耳�以� 媛��졇�삤湲� 
 	@RequestMapping(value="/guide/schedule/fixed", method=RequestMethod.POST)
 	public List<List<GuideAndTravelerDto>> getFixedSchedule(
 			@RequestParam int gnum) {
@@ -44,9 +44,9 @@ public class CalendarController {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
 		
-		//연결된 tnum 전체 구하기 
+		//�뿰寃곕맂 tnum �쟾泥� 援ы븯湲� 
 		List<Integer> tnums = service.getFixedTnum(gnum);
-		List<GuideAndTravelerDto> myList = new ArrayList<>();
+		List<GuideAndTravelerDto> myList = new ArrayList<GuideAndTravelerDto>();
 		for(int tnum: tnums) {
 			map.put("tnum", tnum);
 			myList = service.getFixedSchedule(map);
@@ -55,7 +55,7 @@ public class CalendarController {
 		return list;
 	}
 	
-	//수락 대기중인 스케줄 가져오기 
+	//�닔�씫 ��湲곗쨷�씤 �뒪耳�以� 媛��졇�삤湲� 
 	@RequestMapping(value="/guide/schedule/new", method=RequestMethod.POST)
 	public List<List<GuideAndTravelerDto>> getNewSchedule(
 			@RequestParam int gnum) {
@@ -63,7 +63,7 @@ public class CalendarController {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("gnum", gnum);
 		
-		//연결된 tnum 전체 구하기 
+		//�뿰寃곕맂 tnum �쟾泥� 援ы븯湲� 
 		List<Integer> tnums = service.getWaitTnum(gnum);
 		List<GuideAndTravelerDto> myList = new ArrayList<>();
 		for(int tnum: tnums) {
@@ -74,19 +74,19 @@ public class CalendarController {
 		return list;
 	}
 	
-	//일정 수락
+	//�씪�젙 �닔�씫
 	@RequestMapping(value="/guide/accept", method=RequestMethod.POST)
 	public void acceptSchedule(@RequestParam int num) {
 		service.acceptSchedule(num);
 	}
 	
-	//일정 거절
+	//�씪�젙 嫄곗젅
 	@RequestMapping(value="/guide/decline", method=RequestMethod.POST)
 	public void declineSchedule(@RequestParam int num) {
 		service.declineSchedule(num);
 	}
 	
-	//특정 가이드와 특정 여행자의 여행 정보 가져오기 
+	//�듅�젙 媛��씠�뱶�� �듅�젙 �뿬�뻾�옄�쓽 �뿬�뻾 �젙蹂� 媛��졇�삤湲� 
 	@RequestMapping(value="/guide/schedule/detail", method=RequestMethod.POST)
 	public List<GuideAndTravelerDto> getSpecificSchedule(
 			@RequestParam int gnum,
