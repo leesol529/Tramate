@@ -59,6 +59,11 @@ public class CalendarService {
 		return dao.getSpecificSchedule(map);
 	}
 
+	// 특정 가이드와 특정 여행자의 예약 대기중인 여행 정보 가져오기
+	public List<GuideAndTravelerDto> getSpecificWaitSchedule(Map<String, Integer> map) {
+		return dao.getSpecificWaitSchedule(map);
+	}
+	
 	// 거절 이유 업데이트 하기
 	public void calendarReasonUpdate(Map<String, String> map) {
 

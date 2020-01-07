@@ -54,6 +54,13 @@
     	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='yes' and c.gnum=s.gnum and c.tnum=s.tnum
      </select>
      
+     <!-- 특정 가이드와 특정 여행자의 예약 대기중인 정보만 가져오기 -->
+     <select id="calendarSpecificWaitSchedule" parameterType="Map" resultType="gatdto">
+     	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	 from calendar c, schedule s
+    	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='wait' and c.gnum=s.gnum and c.tnum=s.tnum
+     </select>
+     
      <update id="calendarReasonUpdate" parameterType="Map">
         update calendar set reason = #{reason} where gnum=#{gnum} and tnum=#{tnum}
      </update>
@@ -94,7 +101,7 @@
      
      <!-- 가이드가 거절한 스케줄만 가져오기 -->
      <select id="calendarGetNoForTraveler" parameterType="Map" resultType="gatdto">
-    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, s.pks, s.type
+    	select c.num, c.gnum, c.tnum, c.startdate, c.enddate, c.accept, c.reason, s.pks, s.type
     	 from calendar c, schedule s
     	 where c.gnum=#{gnum} and c.tnum=#{tnum} and c.accept='no' and c.gnum=s.gnum and c.tnum=s.tnum
     	 order by c.startdate desc

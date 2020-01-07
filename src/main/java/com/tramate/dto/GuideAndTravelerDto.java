@@ -9,6 +9,7 @@ public class GuideAndTravelerDto {
 	private String accept;
 	private int pks;
 	private int type;
+	private String reason;
 	
 	
 	public int getNum() {
@@ -59,5 +60,12 @@ public class GuideAndTravelerDto {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	
 	
 }

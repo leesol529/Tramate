@@ -91,6 +91,15 @@ public class CalendarController {
 		map.put("tnum", tnum);
 		return service.getSpecificSchedule(map);
 	}
+	
+	// 특정 가이드와 특정 여행자의 예약 대기중인 여행 정보 가져오기
+	@RequestMapping(value = "/traveler/waiting_schedule/detail", method = RequestMethod.POST)
+	public List<GuideAndTravelerDto> getSpecificWaitSchedule(@RequestParam int gnum, @RequestParam int tnum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("gnum", gnum);
+		map.put("tnum", tnum);
+		return service.getSpecificWaitSchedule(map);
+	}
 
 	// 거절한 이유 업데이트
 	@RequestMapping(value = "/calendar/reason/update", method = RequestMethod.POST)
